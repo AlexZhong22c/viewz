@@ -17,6 +17,17 @@
   "author": "az22c",
   "license": "MIT",
   "dependencies": {
-    "vue": "^2.6.6"
+    "vue": "^2.6.6",
+    "vue-hot-reload-api": "^2.3.2"
+  },
+  "devDependencies": {
+    "@vue/component-compiler-utils": "^2.5.2",
+    "http-server": "^0.11.1",
+    "parcel-bundler": "^1.11.0",
+    "sass": "^1.17.1",
+    "vue-template-compiler": "^2.6.6"
+  },
+  "alias": {
+    "vue": "./node_modules/vue/dist/vue.common.js"
   }
 }

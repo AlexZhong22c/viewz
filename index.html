@@ -12,7 +12,7 @@
       box-sizing: border-box;
     }
     /* 声明变量： */
-    :root {
+    html {
       --button-height: 32px;
       --font-size: 14px;
       --button-bg: white;
@@ -23,43 +23,11 @@
       --border-color-hover: #666666;
     }
   </style>
-  <style>
-    .z-button {
-      font-size: var(--font-size);
-      height: var(--button-height);
-      /* 写死width不好： */
-      padding: 0 1em;
-      border-radius: var(--border-radius);
-      border: 1px solid var(--border-color);
-      background: var(--button-bg);
-    }
-    .z-button:hover {
-      border-color: var(--border-color-hover);
-    }
-    .z-button:active {
-      background: var(--button-active-bg);
-    }
-    /* 后面再优化focus样式： */
-    .z-button:focus {
-      outline: none;
-    }
-  </style>
 </head>
 <body>
   <div id="app">
     <z-button></z-button>
   </div>
-  <script src="./node_modules/vue/dist/vue.min.js"></script>
-  <script src="./button.js"></script>
-  <script>
-    new Vue({
-      el: '#app',
-      // data: () => {
-      //   return {
-      //     message: 'hello world'
-      //   }
-      // }
-    })
-  </script>
+  <script src="./src/app.js"></script>
 </body>
 </html>
