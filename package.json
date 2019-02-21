@@ -1,0 +1,19 @@
+{
+  "name": "viewz",
+  "version": "0.0.1",
+  "description": "an UI",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/az22c/viewz.git"
+  },
+  "keywords": [
+    "vue",
+    "ui"
+  ],
+  "author": "az22c",
+  "license": "MIT"
+}
