@@ -15,5 +15,8 @@
     "ui"
   ],
   "author": "az22c",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "vue": "^2.6.6"
+  }
 }
