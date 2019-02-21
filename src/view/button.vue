@@ -55,6 +55,8 @@
 
     >.icon {
       order: 1;
+
+      margin-right: .1em;
     }
     >.content {
       order: 2;
@@ -62,6 +64,9 @@
     &.z-icon-right {
       >.icon {
         order: 2;
+
+        margin-right: 0;
+        margin-left: .1em;
       }
       >.content {
         order: 1;
