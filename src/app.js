@@ -15,10 +15,14 @@ new Vue({
  * 单元测试
  */
 import chai from 'chai'
+import spies from 'chai-spies'
+chai.use(spies)
+
 const expect = chai.expect
 // console.log(Button)
 // Button是一个对象，ButtonConstructor是一个函数：
 const ButtonConstructor = Vue.extend(Button)
+
 /**
  * test icon prop:
  */
@@ -91,3 +95,31 @@ const ButtonConstructor = Vue.extend(Button)
   vm.$destroy()
 }
 
+/**
+ * test click event:
+ */
+{
+  const iDiv = document.createElement('div')
+  document.body.appendChild(iDiv)
+  const vm = new ButtonConstructor({
+    propsData: {
+      icon: 'settings'
+    }
+  })
+  vm.$mount(iDiv)
+  const spyFn = chai.spy(() => {})
+
+  // vm.$on('click', () => {
+  //   console.log(1)
+  // })
+  // change into:
+  vm.$on('click', spyFn)
+  // vm.$on('clickTest', spyFn)
+
+  // console.log(vm.$el)
+  const buttonElement = vm.$el
+  buttonElement.click()
+  expect(spyFn).to.have.been.called()
+  vm.$el.remove()
+  vm.$destroy()
+}
