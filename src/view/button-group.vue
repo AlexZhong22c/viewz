@@ -34,7 +34,9 @@
 
       // 解决边框问题：
       // 在hover的时候才让它走到上层：
-      margin-right: -1px;
+      &:not(:first-child) {
+        margin-left: -1px;
+      }
       &:hover {
         position: relative;
         z-index: 1;
