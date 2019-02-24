@@ -25,9 +25,15 @@
       --border-color-hover: #666666;
     }
   </style>
+  <style>
+    .box {
+      margin: 20px;
+    }
+  </style>
 </head>
 <body>
   <div id="app">
+    <!--
     <z-button icon="settings" icon-position="right">按钮</z-button>
     <z-button icon="loading">按钮</z-button>
     <z-button icon="settings" icon-position="left">按钮</z-button>
@@ -35,11 +41,22 @@
     <z-button-group>
       <z-button icon="left">上一页</z-button>
       <z-button>更多</z-button>
-      <!-- <div>test</div> -->
       <z-button icon="right" icon-position="right">下一页</z-button>
     </z-button-group>
 
     <z-icon name="download"></z-icon>
+    -->
+    <div class="box">
+      <z-input value="张三" disabled></z-input>
+      <z-input value="张三" readonly></z-input>
+      <z-input value="张三"></z-input>
+    </div>
+    <div class="box">
+        <z-input value="张三" error="姓名不能两个字"></z-input>
+      </div>
+    <div class="box">
+      <z-input value="王" @change="inputChange"></z-input>
+    </div>
   </div>
   <script src="./src/app.js"></script>
 </body>
