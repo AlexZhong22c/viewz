@@ -1,7 +1,13 @@
 <template>
   <div class="wrapper" :class="{error}">
     <!-- readonly 和 disabled 还是有区别的，readonly还能获得焦点的： -->
-    <input :value="value" type="text" :disabled="disabled" :readonly="readonly" />
+    <!-- 原生change事件直传给上一层： -->
+    <input :value="value" type="text" :disabled="disabled" :readonly="readonly" 
+      @change="$emit('change', $event)"
+      @input="$emit('input', $event)"
+      @focus="$emit('focus', $event)"
+      @blur="$emit('blur', $event)"
+    />
     <template v-if="error">
       <z-icon name="error" class="icon-error"></z-icon>
       <span class="errorMessage">{{error}}</span>
