@@ -95,12 +95,24 @@ describe('Input', () => {
           vm.$on(eventName, callback)
           // vm.$el.click()
           const event = new Event(eventName)
+          // https://stackoverflow.com/questions/27108094/how-to-set-target-property-when-simulating-mouseclick-in-javascript
+          // How to set target property when simulating mouseclick in javascript?
+          // 修改只读属性
+          Object.defineProperty(
+            event, 'target', {
+              value: { value: 'hi' },
+              enumerable: true
+            }
+          )
           const inputElement = vm.$el.querySelector('input')
           inputElement.dispatchEvent(event)
+          expect(callback).to.have.been.calledWith('hi')
+
           // expect(callback).to.have.been.called
-          // 这段测试代码有问题：new Event('good')居然还测试通过
-          expect(callback).to.have.been.calledWith(new Event('good'))
           // expect(callback).to.have.been.calledWith(event)
+
+          // 这段测试代码有问题：new Event('good')居然还测试通过：
+          // expect(callback).to.have.been.calledWith(new Event('good'))
         })
     })
   })
