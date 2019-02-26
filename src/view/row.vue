@@ -1,5 +1,5 @@
 <template>
-  <div class="z-row" :style="rowStyle">
+  <div class="z-row" :class="rowClass" :style="rowStyle">
     <slot></slot>
   </div>
 </template>
@@ -10,9 +10,19 @@ export default {
   props: {
     gutter: {
       type: [ Number, String ]
+    },
+    align: {
+      type: String,
+      validator(value) {
+        return ['left', 'right', 'center'].includes(value)
+      }
     }
   },
   computed: {
+    rowClass() {
+      const { align } = this
+      return [ align && `z-row-align-${align}`]
+    },
     rowStyle() {
       const { gutter } = this
       return {
@@ -32,5 +42,14 @@ export default {
 <style lang="scss">
   .z-row {
     display: flex;
+    &-align-left {
+      justify-content: flex-start;
+    }
+    &-align-right {
+      justify-content: flex-end;
+    }
+    &-align-center {
+      justify-content: center;
+    }
   }
 </style>

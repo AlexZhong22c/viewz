@@ -23,7 +23,7 @@
         default: 'left',
         /* validator必须有返回值 */
         validator(value) {
-          return ['left', 'right'].indexOf(value) > -1
+          return ['left', 'right'].includes(value)
         }
       }
     }

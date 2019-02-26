@@ -42,6 +42,7 @@
 
 <style lang="scss">
   .z-col {
+    // TODO:这个width: 50%;要不要留??
     width: 50%;
 
     $class-prefix: 'z-col-';
