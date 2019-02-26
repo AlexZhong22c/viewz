@@ -1,6 +1,5 @@
 <template>
-  <div class="z-col" :class="[span && `z-col-${span}`, offset && `z-col-offset-${offset}`]"
-    :style="{paddingLeft:`${gutter/2}px`, paddingRight:`${gutter/2}px`}">
+  <div class="z-col" :class="colClass" :style="colStyle">
     <slot></slot>
   </div>
 </template>
@@ -20,6 +19,22 @@
       return {
         gutter: 0
       }
+    },
+    computed: {
+      colClass() {
+        const { span, offset } = this
+        return [
+          span && `z-col-${span}`,
+          offset && `z-col-offset-${offset}`
+        ]
+      },
+      colStyle() {
+        const { gutter } = this
+        return {
+          paddingLeft: `${gutter/2}px`,
+          paddingRight:`${gutter/2}px`
+        }
+      }
     }
   }
 </script>
@@ -27,9 +42,7 @@
 
 <style lang="scss">
   .z-col {
-    height: 100px;
     width: 50%;
-    border: 1px solid red;
 
     $class-prefix: 'z-col-';
     @for $n from 1 through 24 {

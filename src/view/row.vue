@@ -1,5 +1,5 @@
 <template>
-  <div class="z-row" :style="{marginLeft:`-${gutter/2}px`, marginRight:`-${gutter/2}px`}">
+  <div class="z-row" :style="rowStyle">
     <slot></slot>
   </div>
 </template>
@@ -9,7 +9,16 @@ export default {
   name: 'zRow',
   props: {
     gutter: {
-      type: [Number, String]
+      type: [ Number, String ]
+    }
+  },
+  computed: {
+    rowStyle() {
+      const { gutter } = this
+      return {
+        marginLeft: `-${gutter/2}px`,
+        marginRight: `-${gutter/2}px`
+      }
     }
   },
   mounted() {
