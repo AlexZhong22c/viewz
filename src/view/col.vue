@@ -8,7 +8,7 @@
   const validator = value => {
     const keys = Object.keys(value)
     for (const key of keys)
-      if (['span', 'offset'].includes(keys))
+      if (!['span', 'offset'].includes(key))
         return false
 
     return true
