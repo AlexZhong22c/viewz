@@ -42,6 +42,9 @@ export default {
 <style lang="scss">
   .z-row {
     display: flex;
+    /* 响应式的时候能换行： */
+    flex-wrap: wrap;
+
     &-align-left {
       justify-content: flex-start;
     }
