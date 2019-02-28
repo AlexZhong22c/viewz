@@ -26,61 +26,30 @@
     }
   </style>
   <style>
-    .demo {
-      background: #ddd;
-      border: 1px solid #666;
+    .my-sider {
+      background: #333;
+      width: 150px;
+    }
+    .my-header {
+      background: #999;
       height: 100px;
+    }
+    .my-footer {
+      background: #ccc;
+      height: 50px;
     }
   </style>
 </head>
 <body>
   <div id="app">
-    <!--
-    <z-button icon="settings" icon-position="right">按钮</z-button>
-    <z-button icon="loading">按钮</z-button>
-    <z-button icon="settings" icon-position="left">按钮</z-button>
-
-    <z-button-group>
-      <z-button icon="left">上一页</z-button>
-      <z-button>更多</z-button>
-      <z-button icon="right" icon-position="right">下一页</z-button>
-    </z-button-group>
-
-    <z-icon name="download"></z-icon>
-    
-    <div class="box">
-      <z-input value="张三" disabled></z-input>
-      <z-input value="张三" readonly></z-input>
-      <z-input value="张三"></z-input>
-    </div>
-    <div class="box">
-        <z-input value="张三" error="姓名不能两个字"></z-input>
-      </div>
-    <div class="box">
-      <z-input value="王" @change="inputChange"></z-input>
-    </div>
-  </div>
-  -->
-    <!-- <z-row gutter="20" align="left">
-      <z-col span="2">11111</z-col>
-      <z-col offset="3" span="10">2222</z-col>
-    </z-row>
-    <z-row gutter="20" align="right">
-      <z-col span="4">333</z-col>
-      <z-col span="4">444</z-col>
-      <z-col span="4">555</z-col>
-      <z-col span="4">66</z-col>
-    </z-row> -->
-    <!-- <z-row>
-      <z-col span="2"></z-col>
-      <z-col span="22"></z-col>
-    </z-row> -->
-    <!-- <z-row>
-      <z-col span="23" offset="1" :narrow-pc="{ span: 12, offset: 12 }"
-        :pc="{ span: 8, offset: 8 }">
-        <div class="demo"></div>
-      </z-col>
-    </z-row> -->
+    <z-layout style="height: 100vh;">
+      <z-sider class="my-sider">sider</z-sider>
+      <z-layout>
+        <z-header class="my-header">header</z-header>
+        <z-content>content</z-content>
+        <z-footer class="my-footer">footer</z-footer>
+      </z-layout>
+    </z-layout>
   </div>
   <script src="./src/app.js"></script>
 </body>
