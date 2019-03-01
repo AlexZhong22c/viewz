@@ -25,31 +25,10 @@
       --border-color-hover: #666666;
     }
   </style>
-  <style>
-    .my-sider {
-      background: #333;
-      width: 150px;
-    }
-    .my-header {
-      background: #999;
-      height: 100px;
-    }
-    .my-footer {
-      background: #ccc;
-      height: 50px;
-    }
-  </style>
 </head>
 <body>
   <div id="app">
-    <z-layout style="height: 100vh;">
-      <z-sider class="my-sider">sider</z-sider>
-      <z-layout>
-        <z-header class="my-header">header</z-header>
-        <z-content>content</z-content>
-        <z-footer class="my-footer">footer</z-footer>
-      </z-layout>
-    </z-layout>
+    <button @click="showToast">点我</button>
   </div>
   <script src="./src/app.js"></script>
 </body>
