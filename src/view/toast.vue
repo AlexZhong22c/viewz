@@ -1,5 +1,5 @@
 <template>
-  <div class="z-toast" ref="z-toast">
+  <div class="z-toast" ref="z-toast" :class="toastClass">
     <div class="z-toast__message-wrapper">
       <slot v-if="!enableHTML"></slot>
       <div v-else v-html="$slots.default[0]"></div>
@@ -26,6 +26,13 @@
         type: Boolean,
         default: false
       },
+      position: {
+        type: String,
+        default: 'top',
+        validator(value) {
+          return ['top', 'bottom', 'middle'].includes(value)
+        }
+      },
       // 这两个属性可以合并到一个Option里：
       autoClose: {
         type: Boolean,
@@ -50,6 +57,13 @@
       this.refreshVerticalLineStyle()
       // 从这个元素被挂载之时开始计时：
       this.initAutoClose()
+    },
+    computed: {
+      toastClass() {
+        return {
+          [`position-${this.position}`]: true
+        }
+      }
     },
     methods: {
       close() {
@@ -94,8 +108,6 @@
     line-height: 1.8;
 
     position: fixed;
-    top: 0; left: 50%;
-    transform: translateX(-50%);
 
     display: flex;
     color: white;
@@ -119,6 +131,18 @@
       // height: 100%;
       border-left: 1px solid #666;
       margin-left: 16px;
+    }
+    left: 50%;
+    transform: translateX(-50%);
+    &.position-top {
+      top: 0;
+    }
+    &.position-bottom {
+      bottom: 0;
+    }
+    &.position-middle {
+      top: 50%;
+      transform: translateY(-50%);
     }
   }
 </style>

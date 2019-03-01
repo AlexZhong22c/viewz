@@ -36,7 +36,8 @@ new Vue({
     showToast() {
       this.$toast('<div style="color:red;">我是 message</div>', {
         enableHTML: true,
-        // autoClose: false
+        autoClose: false,
+        position: 'center',
         closeButtonOption: {
           // text: '关闭btn',
           callback: (vm) => {
