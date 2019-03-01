@@ -4,7 +4,7 @@ let curToast
 /**
  * helpers
  */
-const createToast = ({ Vue, message, propsData }) => {
+const createToast = ({ Vue, message, propsData, onClose }) => {
   const Constructor = Vue.extend(Toast)
   const toast = new Constructor({
     // vue官网说 propsData 仅用于测试：
@@ -13,6 +13,7 @@ const createToast = ({ Vue, message, propsData }) => {
   })
   toast.$slots.default = [message]
   toast.$mount()
+  toast.$on('beforeClose', onClose)
   document.body.appendChild(toast.$el)
   return toast
 }
@@ -23,7 +24,14 @@ export default {
       if (curToast) {
         curToast.close()
       }
-      curToast = createToast({Vue, message, propsData: toastOption })
+      curToast = createToast({
+        Vue,
+        message,
+        propsData: toastOption,
+        onClose: () => {
+          curToast = null
+        }
+      })
     }
   }
 }

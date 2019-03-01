@@ -69,6 +69,7 @@
       close() {
         // 一定要remove才能从页面上去掉：
         this.$el.remove()
+        this.$emit('beforeClose')
         this.$destroy()
       },
       refreshVerticalLineStyle() {
