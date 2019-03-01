@@ -33,15 +33,24 @@ Vue.use(plugin)
 new Vue({
   el: '#app',
   methods: {
-    showToast() {
+    showToast1(){
+      this.showToast('top')
+    },
+    showToast2(){
+      this.showToast('middle')
+    },
+    showToast3(){
+      this.showToast('bottom')
+    },
+    showToast(position) {
       this.$toast(`我是${parseInt(Math.random()*100, 10)}`, {
         // enableHTML: true,
         autoClose: false,
-        position: 'middle',
+        position,
         closeButtonOption: {
           // text: '关闭btn',
           callback: (vm) => {
-            console.log(vm, 111)
+            // console.log(vm, 111)
           }
         }
       })
