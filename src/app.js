@@ -34,10 +34,10 @@ new Vue({
   el: '#app',
   methods: {
     showToast() {
-      this.$toast('<div style="color:red;">我是 message</div>', {
-        enableHTML: true,
+      this.$toast(`我是${parseInt(Math.random()*100, 10)}`, {
+        // enableHTML: true,
         autoClose: false,
-        position: 'center',
+        position: 'middle',
         closeButtonOption: {
           // text: '关闭btn',
           callback: (vm) => {
