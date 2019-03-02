@@ -7,20 +7,20 @@
       </div>
       <div class="vertical-line" ref="vertical-line"></div>
       <span class="z-toast__close-button" @click="onClickClose">
-        {{ closeButtonOption.text || initCloseButtonText }}
+        {{ closeButtonOption.text || DefaultCloseButtonText }}
       </span>
     </div>
   </div>
 </template>
 
 <script>
-  // 能否优化 initCloseButtonText??:
-  const initCloseButtonText = '关闭'
+  // 能否优化 DefaultCloseButtonText??:
+  const DefaultCloseButtonText = '关闭'
   export default {
     name: 'zToast',
     data() {
       return {
-        initCloseButtonText
+        DefaultCloseButtonText
       }
     },
     props: {
@@ -35,21 +35,20 @@
           return ['top', 'bottom', 'middle'].includes(value)
         }
       },
-      // 这两个属性可以合并到一个Option里：
+      // 应该改成以毫秒为单位的：
       autoClose: {
-        type: Boolean,
-        default: true
-      },
-      autoCloseDelay: {
-        type: Number,
-        default: 3
+        type: [ Boolean, Number ],
+        default: 3,
+        validator(value) {
+          return value === false || typeof value === 'number';
+        }
       },
       // 用默认值使得代码(尤其是判断)简洁很多：
       closeButtonOption: {
         type: Object,
         default() {
           return {
-            text: initCloseButtonText,
+            text: DefaultCloseButtonText,
             callback: undefined
           }
         }
@@ -85,7 +84,7 @@
         if (this.autoClose) {
           setTimeout(() => {
             this.close()
-          }, this.autoCloseDelay * 1000)
+          }, this.autoClose * 1000)
         }
       },
       // 设置的这个时机好像不是特别好，目前，自动关闭的话就不执行这个了:
