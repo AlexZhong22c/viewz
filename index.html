@@ -28,9 +28,33 @@
 </head>
 <body>
   <div id="app">
-    <button @click="showToast1">top</button>
-    <button @click="showToast2">middle</button>
-    <button @click="showToast3">bottom</button>
+    <z-tabs :selected.sync="selectedTab" @update:selected="yyy">
+      <z-tabs-head>
+        <template slot="actions">
+          <button>设置</button>
+        </template>
+        <z-tabs-item name="javascript">
+          <z-icon name="settings"></z-icon>JavaScript
+        </z-tabs-item>
+        <z-tabs-item name="css" disabled>
+          CSS
+        </z-tabs-item>
+        <z-tabs-item name="html">
+          HTML
+        </z-tabs-item>
+      </z-tabs-head>
+      <z-tabs-body>
+        <z-tabs-pane name="javascript">
+          JavaScript相关资讯
+        </z-tabs-pane>
+        <z-tabs-pane name="css">
+          CSS相关资讯
+        </z-tabs-pane>
+        <z-tabs-pane name="html">
+          HTML相关资讯
+        </z-tabs-pane>
+      </z-tabs-body>
+    </z-tabs>
   </div>
   <script src="./src/app.js"></script>
 </body>

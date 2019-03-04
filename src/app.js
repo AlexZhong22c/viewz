@@ -12,6 +12,11 @@ import Footer from './view/layout/footer'
 import Sider from './view/layout/sider'
 // import Toast from './view/toast'
 import plugin from './view/plugin'
+import Tabs from './view/tabs'
+import TabsHead from './view/tabs/tabs-head'
+import TabsBody from './view/tabs/tabs-body'
+import TabsItem from './view/tabs/tabs-item'
+import TabsPane from './view/tabs/tabs-pane'
 
 Vue.component('z-button', Button)
 Vue.component('z-button-group', ButtonGroup)
@@ -24,6 +29,11 @@ Vue.component('z-header', Header)
 Vue.component('z-content', Content)
 Vue.component('z-footer', Footer)
 Vue.component('z-sider', Sider)
+Vue.component('z-tabs', Tabs)
+Vue.component('z-tabs-head', TabsHead)
+Vue.component('z-tabs-body', TabsBody)
+Vue.component('z-tabs-item', TabsItem)
+Vue.component('z-tabs-pane', TabsPane)
 
 
 // Vue.component('z-toast', Toast)
@@ -32,7 +42,14 @@ Vue.use(plugin)
 
 new Vue({
   el: '#app',
+  data: {
+    selectedTab: 'html'
+  },
   methods: {
+    yyy(data) {
+      console.log('yyy')
+      console.log(data)
+    },
     showToast1(){
       this.showToast('top')
     },
