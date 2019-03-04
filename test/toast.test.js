@@ -45,7 +45,7 @@ describe('Toast', () => {
       })
     })
 
-    it('接受 closeButton', () => {
+    it('接受 closeButton', (done) => {
       const callback = sinon.fake();
       vm = new ToastConstructor({
         propsData: {
@@ -58,8 +58,11 @@ describe('Toast', () => {
       let closeButton = vm.$el.querySelector('.z-toast__close-button')
       expect(closeButton.textContent.trim()).to.eq('关闭吧111')
       // js原生的click:
-      closeButton.click()
-      expect(callback).to.have.been.called
+      setTimeout(() => {
+        closeButton.click()
+        expect(callback).to.have.been.called
+        done()
+      }, 200)
     })
     it('接受 enableHTML', () => {
       vm = new ToastConstructor({
