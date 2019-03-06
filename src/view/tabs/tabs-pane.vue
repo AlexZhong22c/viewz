@@ -38,5 +38,6 @@
 
 <style lang="scss">
   .z-tabs-pane {
+    padding: 1em;
   }
 </style>
