@@ -1,5 +1,5 @@
 <template>
-  <div class="z-tabs-item" @click="xxx" :class="tabsItemClass">
+  <div class="z-tabs-item" @click="onClickItem" :class="tabsItemClass">
     <slot></slot>
   </div>
 </template>
@@ -37,8 +37,8 @@
       })
     },
     methods: {
-      xxx() {
-        this.eventBus.$emit('update:selected', this.name)
+      onClickItem() {
+        this.eventBus.$emit('update:selected', this.name, this)
       }
     }
   }
@@ -46,6 +46,7 @@
 
 <style lang="scss">
   .z-tabs-item {
+    $blue: blue;
     flex-shrink: 0;
 
     display: flex;
@@ -55,10 +56,10 @@
     padding: 0 1em;
 
     cursor: pointer;
-    border: 1px solid green;
 
     &.active {
-      background: red;
+      color: $blue;
+      font-weight: bold;
     }
   }
 </style>

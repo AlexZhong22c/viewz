@@ -33,8 +33,16 @@
       }
     },
     mounted () {
-      // this.$emit('update:selected', '这是 this $emit 出来的数据')
-      // this.eventBus.$emit('update:selected', this.selected)
+      this.$children.forEach(vm => {
+        if (vm.$options.name === 'zTabsHead') {
+          vm.$children.forEach(childVm => {
+            if (childVm.name === this.selected
+              && childVm.$options.name === 'zTabsItem') {
+              this.eventBus.$emit('update:selected', this.selected, childVm)
+            }
+          })
+        }
+      })
     }
   }
 </script>
