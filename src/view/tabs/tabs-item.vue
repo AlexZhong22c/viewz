@@ -26,7 +26,8 @@
     computed: {
       tabsItemClass () {
         return {
-          active: this.active
+          active: this.active,
+          disabled: this.disabled
         }
       }
     },
@@ -38,6 +39,7 @@
     },
     methods: {
       onClickItem() {
+        if (this.disabled) { return }
         this.eventBus.$emit('update:selected', this.name, this)
       }
     }
@@ -47,6 +49,7 @@
 <style lang="scss">
   .z-tabs-item {
     $blue: blue;
+    $disabled-text-color: grey;
     flex-shrink: 0;
 
     display: flex;
@@ -60,6 +63,10 @@
     &.active {
       color: $blue;
       font-weight: bold;
+    }
+    &.disabled {
+      color: $disabled-text-color;
+      cursor: not-allowed;
     }
   }
 </style>
