@@ -1,7 +1,7 @@
 <template>
   <div class="z-tabs-head">
     <slot></slot>
-    <div class="z-tabs-head__bottom-line" ref="bottom-line"></div>
+    <div class="z-tabs-head__bottom-line" ref="bottomLine"></div>
     <div class="actions-wrapper">
       <slot name="actions"></slot>
     </div>
@@ -11,7 +11,16 @@
 <script>
   export default {
     name: 'zTabsHead',
-    inject: [ 'eventBus' ]
+    inject: [ 'eventBus' ],
+    mounted() {
+      this.eventBus.$on('update:selected', (item, vm) => {
+        const { width, left } = vm.$el.getBoundingClientRect()
+        this.$refs.bottomLine.style.width = `${width}px`
+        // better:硬件加速：(因为会导致bottomLine一开始从左边滑进来，所以先暂时放弃)
+        // this.$refs.bottomLine.style.transform = `translateX(${left}px)`
+        this.$refs.bottomLine.style.left = `${left}px`
+      })
+    }
   }
 </script>
 
@@ -22,13 +31,12 @@
 
     display: flex;
     height: $tab-height;
-    border: 1px solid red;
     position: relative;
     > .z-tabs-head__bottom-line {
       position: absolute;
       bottom: 0;
       border-bottom: 1px solid $blue;
-      width: 100px;
+      transition: all 350ms;
     }
     // 向右对齐：
     > .actions-wrapper {
