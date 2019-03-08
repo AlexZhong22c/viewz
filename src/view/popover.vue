@@ -1,8 +1,8 @@
 <template>
   <div class="z-popover"
-    @click="xxxxxx">
+    @click.stop="xxxxxx">
     <slot></slot>
-    <div class="z-popover__content-wrapper"
+    <div class="z-popover__content-wrapper" @click.stop
       v-if="visible">
       <slot name="content"></slot>
     </div>
@@ -18,6 +18,16 @@ export default {
   methods: {
     xxxxxx() {
       this.visible = !this.visible
+      if (this.visible) {
+        this.$nextTick(() => {
+          // 点击body的时候能隐藏popover:
+          const eventHandler = () => {
+            this.visible = false
+            document.removeEventListener('click', eventHandler)
+          }
+          document.addEventListener('click', eventHandler)
+        })
+      }
     }
   }
 }
