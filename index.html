@@ -26,35 +26,20 @@
     }
   </style>
 </head>
-<body>
+<body style="padding-left:300px;padding-top:300px;">
   <div id="app">
-    <!-- <z-tabs :selected.sync="selectedTab" @update:selected="yyy">
-      <z-tabs-head>
-        <template slot="actions">
-          <button>设置</button>
-        </template>
-        <z-tabs-item name="javascript">
-          <z-icon name="settings"></z-icon>JavaScript
-        </z-tabs-item>
-        <z-tabs-item name="css" disabled>
-          CSS
-        </z-tabs-item>
-        <z-tabs-item name="html">
-          HTML
-        </z-tabs-item>
-      </z-tabs-head>
-      <z-tabs-body>
-        <z-tabs-pane name="javascript">
-          JavaScript相关资讯
-        </z-tabs-pane>
-        <z-tabs-pane name="css">
-          CSS相关资讯
-        </z-tabs-pane>
-        <z-tabs-pane name="html">
-          HTML相关资讯
-        </z-tabs-pane>
-      </z-tabs-body>
-    </z-tabs> -->
+    <z-popover>
+      <template slot="content">
+        <div>popover内容</div>
+      </template>
+      <button>点我</button>
+    </z-popover>
+    <z-popover>
+      <template slot="content">
+        <div>popover内容</div>
+      </template>
+      <button>点我</button>
+    </z-popover>
   </div>
   <script src="./src/app.js"></script>
 </body>
