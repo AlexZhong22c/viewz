@@ -33,6 +33,9 @@
       }
     },
     mounted () {
+      if (this.$children.length === 0) {
+        throw new Error('tabs的子组件应该是tabs-head和tabs-body，但你没有设置子组件')
+      }
       this.$children.forEach(vm => {
         if (vm.$options.name === 'zTabsHead') {
           vm.$children.forEach(childVm => {
