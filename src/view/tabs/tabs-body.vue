@@ -5,13 +5,13 @@
 </template>
 
 <script>
-  export default {
-    name: 'zTabsBody',
-    inject: [ 'eventBus' ]
-  }
+export default {
+  name: 'zTabsBody',
+  inject: ['eventBus']
+}
 </script>
 
 <style lang="scss">
-  .z-tabs-body {
-  }
+.z-tabs-body {
+}
 </style>
