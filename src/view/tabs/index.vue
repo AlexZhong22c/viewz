@@ -32,24 +32,32 @@ export default {
       eventBus: this.eventBus
     }
   },
-  mounted() {
-    if (this.$children.length === 0) {
-      throw new Error(
-        'tabs的子组件应该是tabs-head和tabs-body，但你没有设置子组件'
-      )
-    }
-    this.$children.forEach(vm => {
-      if (vm.$options.name === 'zTabsHead') {
-        vm.$children.forEach(childVm => {
-          if (
-            childVm.name === this.selected &&
-            childVm.$options.name === 'zTabsItem'
-          ) {
-            this.eventBus.$emit('update:selected', this.selected, childVm)
-          }
-        })
+  methods: {
+    checkChildrenValid() {
+      if (this.$children.length === 0) {
+        throw new Error(
+          'tabs的子组件应该是tabs-head和tabs-body，但你没有设置子组件'
+        )
       }
-    })
+    },
+    updateEventBusSelected() {
+      this.$children.forEach(vm => {
+        if (vm.$options.name === 'zTabsHead') {
+          vm.$children.forEach(childVm => {
+            if (
+              childVm.name === this.selected &&
+              childVm.$options.name === 'zTabsItem'
+            ) {
+              this.eventBus.$emit('update:selected', this.selected, childVm)
+            }
+          })
+        }
+      })
+    }
+  },
+  mounted() {
+    this.checkChildrenValid()
+    this.updateEventBusSelected()
   }
 }
 </script>
