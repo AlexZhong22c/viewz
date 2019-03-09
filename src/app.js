@@ -47,9 +47,8 @@ new Vue({
     selectedTab: 'html'
   },
   methods: {
-    yyy(data) {
+    yyy() {
       console.log('yyy')
-      console.log(data)
     },
     showToast1(){
       this.showToast('top')

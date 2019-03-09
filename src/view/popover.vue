@@ -1,7 +1,7 @@
 <template>
   <div class="z-popover"
-    @click.stop="xxxxxx">
-    <span ref="triggerWrapper"><slot></slot></span>
+    ref="popover">
+    <span ref="triggerWrapper" @click="onClickTrigger"><slot></slot></span>
     <div class="z-popover__content-wrapper"
       ref="contentWrapper"
       v-if="visible">
@@ -17,25 +17,59 @@ export default {
     return { visible: false }
   },
   methods: {
-    xxxxxx() {
-      this.visible = !this.visible
+    positionContent() {
+      const { contentWrapper, triggerWrapper } = this.$refs
+      // 这句能否放在设置left top那两句之后??
+      document.body.appendChild(contentWrapper)
+
+      const { top, left } = triggerWrapper.getBoundingClientRect()
+      // TODO: window.scrollX要兼容不同浏览器
+      contentWrapper.style.left = left + window.scrollX + 'px'
+      contentWrapper.style.top = top + window.scrollY + 'px'
+    },
+    /**
+     * 对于绑定事件的回调函数，好的命名能帮助你明确回调函数所需做的事务，以便把事务区分开来；并且帮助你确定执行绑定和卸载的时机。
+     * 而回调函数的触发，一般都是由用户触发，所以`触发时机`不由程序员决定，程序员只是约定了触发条件和(在回调函数中的)触发后的内容。
+     * 3个时机变换： 绑定 --> (一般由用户)触发 --> 卸载
+     * 回调函数 === 触发后执行的内容
+     */
+    /**
+     * 绑定的时机：弹窗出来
+     * `绑定对象`和该对象的事件：document / click
+     * 回调函数(`触发绑定事件`后执行)：是否关闭弹窗和是否卸载该绑定
+     */
+    bindClickDocumentToClosePopover(e) {
+        const { popover, contentWrapper } = this.$refs
+        // 因为冒泡，它们都触发了document的click：
+        // 由trigger引发: true false 不执行close，但由另一处代码决定是否close(这就是内聚close函数的好处)
+        // 由弹窗dom引发: false true 不执行close
+        // 由document引发: false false 执行close
+        // 由其他的trigger(dom的引用内存地址不同)引发： false false 执行close
+        if (popover &&
+          (popover === e.target || popover.contains(e.target))
+        ) { return }
+        // contentWrapper的DOM不在popover的DOM中，所以要另外判断：
+        if (contentWrapper &&
+          (contentWrapper === e.target || contentWrapper.contains(e.target))
+        ) { return }
+        this.close()
+    },
+    open() {
+      this.visible = true
+      this.$nextTick(() => {
+        this.positionContent()
+        document.addEventListener('click', this.bindClickDocumentToClosePopover)
+      })
+    },
+    close() {
+      this.visible = false
+      document.removeEventListener('click', this.bindClickDocumentToClosePopover)
+    },
+    onClickTrigger(event) {
       if (this.visible) {
-        this.$nextTick(() => {
-          // 这句能否放在设置left top那两句之后??
-          document.body.appendChild(this.$refs.contentWrapper)
-
-          const { top, left } = this.$refs.triggerWrapper.getBoundingClientRect()
-          // TODO: window.scrollX要兼容不同浏览器
-          this.$refs.contentWrapper.style.left = left + window.scrollX + 'px'
-          this.$refs.contentWrapper.style.top = top + window.scrollY + 'px'
-
-          // 点击body的时候能隐藏popover:
-          const eventHandler = () => {
-            this.visible = false
-            document.removeEventListener('click', eventHandler)
-          }
-          document.addEventListener('click', eventHandler)
-        })
+        this.close()
+      } else {
+        this.open()
       }
     }
   }
