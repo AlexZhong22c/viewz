@@ -1,7 +1,12 @@
 <template>
   <div class="z-popover"
     ref="popover">
-    <span ref="triggerWrapper" @click="onClickTrigger"><slot></slot></span>
+    <span
+      ref="triggerWrapper"
+      class="z-popover__trigger-wrapper"
+      @click="onClickTrigger">
+      <slot></slot>
+    </span>
     <div class="z-popover__content-wrapper"
       ref="contentWrapper"
       v-if="visible">
@@ -82,12 +87,42 @@ export default {
   display: inline-block;
   vertical-align: top;
   position: relative;
+  .z-popover__trigger-wrapper {
+    // 令span的高度基本上等于里面内容的最大高度。如果不放心可以用inline-flex，但是兼容性会差一点：
+    display: inline-block;
+  }
 }
 // 该元素被添加在body元素末端：
 .z-popover__content-wrapper {
+  $border-color: #333;
+  $border-radius: 4px;
   position: absolute;
   transform: translateY(-100%);
-  border: 1px solid red;
+
+  // transform: translateY已经用了：
+  margin-top: -10px;
+  padding: .5em 1em;
+
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  &::before, &::after {
+    content: '';
+    display: block;
+    border: 10px solid transparent;
+    width: 0;
+    height: 0;
+    position: absolute;
+    left: 10px;
+  }
+  &::before {
+    border-top-color: black;
+    top: 100%;
+  }
+  &::after {
+    border-top-color: white;
+    // 盖住三角形一条边：
+    top: calc(100% - 1px);
+  }
 }
 </style>
