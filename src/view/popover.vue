@@ -111,7 +111,11 @@ export default {
 
   border: 1px solid $border-color;
   border-radius: $border-radius;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+
+  // 组合使用，解决⎡伪元素实现的箭头不能有box-shadow⎦的问题，但是兼容性比较差：
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5));
+  background: white;
+
   &::before, &::after {
     content: '';
     display: block;
