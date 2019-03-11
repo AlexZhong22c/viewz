@@ -16,6 +16,7 @@
 </template>
 
 <script>
+// TODO:检测这个popover的高度，如果超过到窗口上边的距离(也就是容不下显示完全)，应该自动转到下面弹出来。
 export default {
   name: 'zPopover',
   data() {
@@ -102,6 +103,11 @@ export default {
   // transform: translateY已经用了：
   margin-top: -10px;
   padding: .5em 1em;
+
+  // 给个最大宽度，不能太丑：
+  max-width: 20em;
+  // 中文网站加这个，如果是应用于英文网站不建议：
+  word-break: break-all;
 
   border: 1px solid $border-color;
   border-radius: $border-radius;
