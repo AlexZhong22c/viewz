@@ -8,6 +8,7 @@
       <slot></slot>
     </span>
     <div class="z-popover__content-wrapper"
+      :class="contentWrapperClass"
       ref="contentWrapper"
       v-if="visible">
       <slot name="content"></slot>
@@ -22,16 +23,45 @@ export default {
   data() {
     return { visible: false }
   },
+  props: {
+    position: {
+      type: String,
+      default: 'top',
+      validator (value) {
+        return ['top', 'bottom', 'left', 'right'].includes(value)
+      }
+    }
+  },
+  computed: {
+    contentWrapperClass() {
+      return [`position-${this.position}`]
+    }
+  },
   methods: {
     positionContent() {
       const { contentWrapper, triggerWrapper } = this.$refs
       // 这句能否放在设置left top那两句之后??
       document.body.appendChild(contentWrapper)
 
-      const { top, left } = triggerWrapper.getBoundingClientRect()
+      const { width, height, top, left } = triggerWrapper.getBoundingClientRect()
       // TODO: window.scrollX要兼容不同浏览器
-      contentWrapper.style.left = left + window.scrollX + 'px'
-      contentWrapper.style.top = top + window.scrollY + 'px'
+      if (this.position === 'top') {
+        contentWrapper.style.left = left + window.scrollX + 'px'
+        contentWrapper.style.top = top + window.scrollY + 'px'
+      } else if (this.position === 'bottom') {
+        contentWrapper.style.left = left + window.scrollX + 'px'
+        contentWrapper.style.top = top + height + window.scrollY + 'px'
+      } else if (this.position === 'left') {
+        contentWrapper.style.left = left + window.scrollX + 'px'
+        const { height: height2 } = contentWrapper.getBoundingClientRect()
+        contentWrapper.style.top = top + window.scrollY +
+          ( height - height2 ) / 2 + 'px'
+      } else if (this.position === 'right') {
+        contentWrapper.style.left = left + window.scrollX + width + 'px'
+        const { height: height2 } = contentWrapper.getBoundingClientRect()
+        contentWrapper.style.top = top + window.scrollY +
+          (height - height2) / 2 + 'px'
+      }
     },
     /**
      * 对于绑定事件的回调函数，好的命名能帮助你明确回调函数所需做的事务，以便把事务区分开来；并且帮助你确定执行绑定和卸载的时机。
@@ -98,10 +128,7 @@ export default {
   $border-color: #333;
   $border-radius: 4px;
   position: absolute;
-  transform: translateY(-100%);
 
-  // transform: translateY已经用了：
-  margin-top: -10px;
   padding: .5em 1em;
 
   // 给个最大宽度，不能太丑：
@@ -123,16 +150,67 @@ export default {
     width: 0;
     height: 0;
     position: absolute;
-    left: 10px;
   }
-  &::before {
-    border-top-color: black;
-    top: 100%;
+  &.position-top {
+    transform: translateY(-100%);
+    margin-top: -10px;
+    &::before, &::after {
+      left: 10px;
+    }
+    &::before {
+      border-top-color: black;
+      top: 100%;
+    }
+    &::after {
+      border-top-color: white;
+      // 盖住三角形一条边：
+      top: calc(100% - 1px);
+    }
   }
-  &::after {
-    border-top-color: white;
-    // 盖住三角形一条边：
-    top: calc(100% - 1px);
+  &.position-bottom {
+    margin-top: 10px;
+    &::before, &::after {
+      left: 10px;
+    }
+    &::before {
+      border-bottom-color: black;
+      bottom: 100%;
+    }
+    &::after {
+      border-bottom-color: white;
+      bottom: calc(100% - 1px);
+    }
+  }
+  &.position-left {
+    transform: translateX(-100%);
+    margin-left: -10px;
+    &::before, &::after {
+      transform: translateY(-50%);
+      top: 50%;
+    }
+    &::before {
+      border-left-color: black;
+      left: 100%;
+    }
+    &::after {
+      border-left-color: white;
+      left: calc(100% - 1px);
+    }
+  }
+  &.position-right {
+    margin-left: 10px;
+    &::before, &::after {
+      transform: translateY(-50%);
+      top: 50%;
+    }
+    &::before {
+      border-right-color: black;
+      right: 100%;
+    }
+    &::after {
+      border-right-color: white;
+      right: calc(100% - 1px);
+    }
   }
 }
 </style>
