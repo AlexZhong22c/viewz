@@ -27,8 +27,8 @@
   </style>
 </head>
 <body style="padding-left:300px;padding-top:300px;">
-  <div id="app">
-    <div style="overflow:hidden;padding:150px;"
+  <div id="app" style="padding-left: 100px;">
+    <div style="overflow:hidden;padding-top: 150px; padding-bottom: 40px;"
       @click="yyy">
       <z-popover>
         <template slot="content">
@@ -67,6 +67,51 @@
       </z-popover>
 
       <z-popover position="bottom">
+        <template slot="content">
+          <div>popover内容<br>popover内容<br>popover内容</div>
+        </template>
+        <z-button>点我b</z-button>
+      </z-popover>
+
+    </div>
+    <div style="overflow:hidden;padding-bottom: 150px;">
+      <z-popover trigger="hover">
+        <template slot="content">
+          <div>askdjsakdjsakjdslkjdlsksdfdsfsdfdsfsfdsfsfdsfsdfdsfjdlsjkdlskjdlsjkdlskjdlsajkdlajkdlkajdlksajdladjk</div>
+          <div>askdjsakdjsakjdslkjdlskjdlsjkdlskjdlsjkdlskjdlsajkdlajkdlkajdlksajdladjk</div>
+        </template>
+        <z-button>点我</z-button>
+      </z-popover>
+
+      <z-popover trigger="hover">
+        <template slot="content">
+          <div>popover内容<br>popover内容<br>popover内容</div>
+        </template>
+        <z-button>点我</z-button>
+      </z-popover>
+
+      <z-popover position="top" trigger="hover">
+        <template slot="content">
+          <div>popover内容<br>popover内容<br>popover内容</div>
+        </template>
+        <z-button>点我t</z-button>
+      </z-popover>
+
+      <z-popover position="left" trigger="hover">
+        <template slot="content">
+          <div>popover内容<br>popover内容<br>popover内容</div>
+        </template>
+        <z-button>点我l</z-button>
+      </z-popover>
+
+      <z-popover position="right" trigger="hover">
+        <template slot="content">
+          <div>popover内容<br>popover内容<br>popover内容</div>
+        </template>
+        <z-button>点我r</z-button>
+      </z-popover>
+
+      <z-popover position="bottom" trigger="hover">
         <template slot="content">
           <div>popover内容<br>popover内容<br>popover内容</div>
         </template>
