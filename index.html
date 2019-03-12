@@ -31,9 +31,10 @@
     <div style="overflow:hidden;padding-top: 150px; padding-bottom: 40px;"
       @click="yyy">
       <z-popover>
-        <template slot="content">
+        <template slot="content" slot-scope="{ close }">
           <div>askdjsakdjsakjdslkjdlsksdfdsfsdfdsfsfdsfsfdsfsdfdsfjdlsjkdlskjdlsjkdlskjdlsajkdlajkdlkajdlksajdladjk</div>
-          <div>askdjsakdjsakjdslkjdlskjdlsjkdlskjdlsjkdlskjdlsajkdlajkdlkajdlksajdladjk</div>
+          <div>askdjsakdjsakjdslkjdlskjdlsjkdlskjdlsjkdlskjdlsajkdlajkdlkajdlksajdladjk</div><strong>测试</strong>
+          <z-button @click="close">关闭</z-button>
         </template>
         <z-button>点我</z-button>
       </z-popover>

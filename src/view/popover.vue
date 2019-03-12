@@ -10,7 +10,7 @@
       :class="contentWrapperClass"
       ref="contentWrapper"
       v-if="visible">
-      <slot name="content"></slot>
+      <slot name="content" :close="close"></slot>
     </div>
   </div>
 </template>
@@ -19,6 +19,22 @@
 // TODO:检测这个popover的高度，如果超过到窗口上边的距离(也就是容不下显示完全)，应该自动转到下面弹出来。
 export default {
   name: 'zPopover',
+  props: {
+    position: {
+      type: String,
+      default: 'top',
+      validator (value) {
+        return ['top', 'bottom', 'left', 'right'].includes(value)
+      }
+    },
+    trigger: {
+      type: String,
+      default: 'click',
+      validator(value) {
+        return ['click', 'hover'].includes(value)
+      }
+    }
+  },
   data() {
     return { visible: false }
   },
@@ -38,22 +54,6 @@ export default {
     } else {
       this.$refs.popover.removeEventListener('mouseenter', this.open)
       this.$refs.popover.removeEventListener('mouseleave', this.close)
-    }
-  },
-  props: {
-    position: {
-      type: String,
-      default: 'top',
-      validator (value) {
-        return ['top', 'bottom', 'left', 'right'].includes(value)
-      }
-    },
-    trigger: {
-      type: String,
-      default: 'click',
-      validator(value) {
-        return ['click', 'hover'].includes(value)
-      }
     }
   },
   computed: {
