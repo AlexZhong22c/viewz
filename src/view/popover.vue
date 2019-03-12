@@ -166,13 +166,14 @@ export default {
     width: 0;
     height: 0;
     position: absolute;
-    border-color: black;
   }
   &.position-top {
     transform: translateY(-100%);
     margin-top: -10px;
     &::before, &::after {
       left: 10px;
+
+      border-bottom: none;
     }
     &::before {
       border-top-color: black;
@@ -188,6 +189,8 @@ export default {
     margin-top: 10px;
     &::before, &::after {
       left: 10px;
+
+      border-top: none;
     }
     &::before {
       border-bottom-color: black;
@@ -204,6 +207,8 @@ export default {
     &::before, &::after {
       transform: translateY(-50%);
       top: 50%;
+
+      border-right: none;
     }
     &::before {
       border-left-color: black;
@@ -219,6 +224,8 @@ export default {
     &::before, &::after {
       transform: translateY(-50%);
       top: 50%;
+
+      border-left: none;
     }
     &::before {
       border-right-color: black;
