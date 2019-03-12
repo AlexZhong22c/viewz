@@ -166,6 +166,7 @@ export default {
     width: 0;
     height: 0;
     position: absolute;
+    border-color: black;
   }
   &.position-top {
     transform: translateY(-100%);
