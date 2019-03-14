@@ -18,6 +18,8 @@ import TabsBody from './view/tabs/tabs-body'
 import TabsItem from './view/tabs/tabs-item'
 import TabsPane from './view/tabs/tabs-pane'
 import Popover from './view/popover'
+import Collapse from './view/collapse'
+import CollapseItem from './view/collapse-item'
 
 Vue.component('z-button', Button)
 Vue.component('z-button-group', ButtonGroup)
@@ -36,6 +38,8 @@ Vue.component('z-tabs-body', TabsBody)
 Vue.component('z-tabs-item', TabsItem)
 Vue.component('z-tabs-pane', TabsPane)
 Vue.component('z-popover', Popover)
+Vue.component('z-collapse', Collapse)
+Vue.component('z-collapse-item', CollapseItem)
 
 // Vue.component('z-toast', Toast)
 // 通过js实例方法创建组件实例：
