@@ -20,11 +20,9 @@
       }
     },
     provide () {
-      // 这里有bug:子组件必须inject eventBus，而这里是有条件provide它：
-      if (this.single) {
-        return {
-          eventBus: this.eventBus
-        }
+      // TODO:之后再想办法在需要的时候才provide inject eventBus:
+      return {
+        eventBus: this.eventBus
       }
     }
   }
