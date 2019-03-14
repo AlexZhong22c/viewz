@@ -48,33 +48,7 @@ Vue.use(plugin)
 new Vue({
   el: '#app',
   data: {
-    selectedTab: 'html'
   },
   methods: {
-    yyy() {
-      console.log('yyy')
-    },
-    showToast1(){
-      this.showToast('top')
-    },
-    showToast2(){
-      this.showToast('middle')
-    },
-    showToast3(){
-      this.showToast('bottom')
-    },
-    showToast(position) {
-      this.$toast(`我是${parseInt(Math.random()*100, 10)}`, {
-        // enableHTML: true,
-        // autoClose: 10,
-        position,
-        closeButtonOption: {
-          // text: '关闭btn',
-          callback: (vm) => {
-            // console.log(vm, 111)
-          }
-        }
-      })
-    }
   }
 })

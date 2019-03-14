@@ -5,8 +5,28 @@
 </template>
 
 <script>
+  import Vue from 'vue'
   export default {
-    name: 'zCollapse'
+    name: 'zCollapse',
+    props: {
+      single: {
+        type: Boolean,
+        default: false
+      }
+    },
+    data () {
+      return {
+        eventBus: new Vue()
+      }
+    },
+    provide () {
+      // 这里有bug:子组件必须inject eventBus，而这里是有条件provide它：
+      if (this.single) {
+        return {
+          eventBus: this.eventBus
+        }
+      }
+    }
   }
 </script>
 
