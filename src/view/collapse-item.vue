@@ -16,6 +16,11 @@
       title: {
         type: String,
         required: true
+      },
+      // 不支持Number，难受：
+      name: {
+        type: String,
+        required: true
       }
     },
     data () {
@@ -26,9 +31,11 @@
     inject: ['eventBus'],
     mounted () {
       this.eventBus && this.eventBus.$on('update:selected',
-      vm => {
-        if (vm !== this) {
+      name => {
+        if (name !== this.name) {
           this.close()
+        } else {
+          this.show()
         }
       })
     },
@@ -37,12 +44,15 @@
         if (this.open) {
           this.open = false
         } else {
-          this.open = true
-          this.eventBus && this.eventBus.$emit('update:selected', this)
+          // this.open = true // 解决循环互相触发
+          this.eventBus && this.eventBus.$emit('update:selected', this.name)
         }
       },
       close () {
         this.open = false
+      },
+      show () {
+        this.open = true
       }
     },
   }
