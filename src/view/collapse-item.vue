@@ -1,6 +1,6 @@
 <template>
   <div class="z-collapse-item">
-    <div class="title" @click="toggle">
+    <div class="title" @click="toggle" :data-name="name">
       {{title}}
     </div>
     <div class="content" ref="content" v-if="open">
