@@ -3,7 +3,7 @@
     <div class="title" @click="toggle">
       {{title}}
     </div>
-    <div class="content" v-if="open">
+    <div class="content" ref="content" v-if="open">
       <slot></slot>
     </div>
   </div>
@@ -40,6 +40,7 @@
       })
     },
     methods: {
+      // 先通知同步所有组件该事件，再根据事件改变自己的状态：
       toggle () {
         if (this.open) {
           this.eventBus && this.eventBus.$emit('update:removeSelected', this.name)
@@ -69,6 +70,8 @@
       align-items: center;
 
       padding: 0 8px;
+
+      background: lighten($grey, 8%);
     }
     > .content {
       padding: 8px;
