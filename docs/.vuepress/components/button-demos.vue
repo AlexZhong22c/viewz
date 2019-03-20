@@ -18,6 +18,7 @@
     },
     data () {
       return {
+        // FIXME:连html属性前的空格也去掉了：
         content: `
           <z-button>默认按钮</z-button>
           <z-button icon="settings">默认按钮</z-button>
