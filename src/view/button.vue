@@ -3,7 +3,7 @@
    @click="$emit('click')">
     <z-icon v-if="!loading && icon" class="icon" :name="icon"></z-icon>
     <z-icon v-if="loading" class="icon loading" name="loading"></z-icon>
-    <div class="content">
+    <div class="z-button-content">
       <slot></slot>
     </div>
    </button>
@@ -64,7 +64,7 @@
 
       margin-right: .1em;
     }
-    >.content {
+    >.z-button-content {
       order: 2;
     }
     &.z-icon-right {
@@ -74,7 +74,7 @@
         margin-right: 0;
         margin-left: .1em;
       }
-      >.content {
+      >.z-button-content {
         order: 1;
       }
     }
