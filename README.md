@@ -16,23 +16,6 @@
 
   IE8 及以上浏览器都支持此样式。
 
-  你还需要设置默认颜色等变量（后续会改为 SCSS 变量）：
-
-  ```css
-html {
-  --button-height: 32px;
-  --font-size: 14px;
-  --button-bg: white;
-  --button-active-bg: #eee;
-  --border-radius: 4px;
-  --color: #333333;
-  --border-color: #999999;
-  /* test button-group: */
-  /* --border-color-hover: red; */
-  --border-color-hover: #666666;
-}
-  ```
-  Edge 15 及以上浏览器都支持此样式写法。 [CSS Variables](https://caniuse.com/#feat=css-variables)
 
 2. 安装 viewz
 

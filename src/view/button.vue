@@ -31,14 +31,15 @@
 </script>
 
 <style lang="scss">
+  @import "src/_var.scss";
   .z-button {
-    font-size: var(--font-size);
-    height: var(--button-height);
+    font-size: $z-font-size;
+    height: $z-button-height;
     /* 写死width不好： */
     padding: 0 1em;
-    border-radius: var(--border-radius);
-    border: 1px solid var(--border-color);
-    background: var(--button-bg);
+    border-radius: $z-border-radius;
+    border: 1px solid $z-border-gray1;
+    background: $z-bg-white1;
 
     /* 内容都居中 */
     display: inline-flex;
@@ -48,10 +49,10 @@
     /* 弄掉行内元素默认基线对齐 */
     vertical-align: middle;
     &:hover {
-      border-color: var(--border-color-hover);
+      border-color: $z-border-gray--hover1;
     }
     &:active {
-      background: var(--button-active-bg);
+      background: $z-bg-white--active1;
     }
     /* 后面再优化focus样式： */
     &:focus {
