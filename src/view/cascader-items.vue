@@ -1,5 +1,5 @@
 <template>
-  <div class="z-cascader-items">
+  <div class="z-cascader-items" :style="{ height: height }">
     <div class="z-cascader-items__items">
       <div
         class="z-cascader-items__label"
@@ -9,7 +9,7 @@
       >{{item.name}}</div>
     </div>
     <div class="z-cascader-items__children" v-if="childrenItems">
-      <z-cascader-items :items="childrenItems"></z-cascader-items>
+      <z-cascader-items :items="childrenItems" :height="height"></z-cascader-items>
     </div>
   </div>
 </template>
@@ -23,6 +23,9 @@
     props: {
       items: {
         type: Array
+      },
+      height: {
+        type: String
       }
     },
     data () {
@@ -48,11 +51,12 @@
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
+
+    // 定高：
+    height: 100px;
     .z-cascader-items__items {
+      height: 100%;
       border: 1px solid red;
-    }
-    .z-cascader-items__children {
-      margin-top: -1px;
     }
   }
 </style>
