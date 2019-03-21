@@ -2,6 +2,7 @@ import Vue from 'vue'
 
 import Button from './view/button'
 import ButtonGroup from './view/button-group'
+import Cascader from './view/cascader'
 import Col from './view/col'
 import Collapse from './view/collapse'
 import CollapseItem from './view/collapse-item'
@@ -22,6 +23,7 @@ import TabsPane from './view/tabs/tabs-pane'
 
 Vue.component('z-button', Button)
 Vue.component('z-button-group', ButtonGroup)
+Vue.component('z-cascader', Cascader)
 Vue.component('z-col', Col)
 Vue.component('z-collapse', Collapse)
 Vue.component('z-collapse-item', CollapseItem)
@@ -43,13 +45,57 @@ Vue.component('z-tabs-pane', TabsPane)
 import plugin from './view/plugin'
 // import Toast from './view/toast'
 // Vue.component('z-toast', Toast)
-// 通过js实例方法创建组件实例：
+// 通过js实例方法创建Toast组件实例：
 Vue.use(plugin)
 
 new Vue({
   el: '#app',
-  data: {
-    selectedTab: ['2','1']
+  data() {
+    return {
+      source: [{
+        name: '浙江',
+        children: [
+          {
+            name: '杭州',
+            children: [
+              {name: '上城'},
+              {name: '下城'},
+              {name: '江干'},
+            ]
+          },
+          {
+            name: '嘉兴',
+            children: [
+              {name: '南湖'},
+              {name: '秀洲'},
+              {name: '嘉善'},
+            ]
+          },
+        ]
+      }, {
+        name: '福建',
+        children: [
+          {
+            name: '福州',
+            children: [
+              {name: '鼓楼'},
+              {name: '台江'},
+              {name: '仓山'},
+            ]
+          },
+        ]
+      }, {
+        name: '安徽',
+        children: [{
+          name: '合肥',
+          children: [{
+            name: '瑶海'
+          }, {
+            name: '庐阳'
+          }]
+        }]
+      }]
+    }
   },
   methods: {
   }
