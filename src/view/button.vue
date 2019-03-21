@@ -31,7 +31,7 @@
 </script>
 
 <style lang="scss">
-  @import "src/_var.scss";
+  @import "var";
   .z-button {
     font-size: $z-font-size;
     height: $z-button-height;

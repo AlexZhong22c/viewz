@@ -40,7 +40,7 @@
 </script>
 
 <style lang="scss">
-  @import "src/_var.scss";
+  @import "var";
   $red: #F1453D;
   .wrapper {
     font-size: $z-font-size--small;

@@ -19,7 +19,7 @@
 </script>
 
 <style lang="scss">
-  @import "src/_var.scss";
+  @import "var";
   .z-button-group {
     display: inline-flex;
     vertical-align: middle;
