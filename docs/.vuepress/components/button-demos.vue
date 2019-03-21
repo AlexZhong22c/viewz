@@ -24,7 +24,7 @@
           <z-button icon="settings">默认按钮</z-button>
           <z-button :loading="true">默认按钮</z-button>
           <z-button disabled>默认按钮</z-button>
-      `.replace(/\t+| +/g, '').trim()
+      `.replace(/\t+| {2,}/g, '').trim()
       }
     }
   }

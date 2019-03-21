@@ -1,5 +1,6 @@
 module.exports = {
   title: 'VIEWZ UI',
+  base: '/viewz/',
   description: '一个好用的UI库',
   themeConfig: {
     nav: [
@@ -17,7 +18,15 @@ module.exports = {
       },
       {
         title: '组件',
-        children: ['/components/button']
+        children: [
+          '/components/button',
+          '/components/grid',
+          '/components/input',
+          '/components/layout',
+          '/components/popover',
+          '/components/tabs',
+          '/components/toast'
+        ]
       },
     ]
   }

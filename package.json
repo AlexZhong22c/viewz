@@ -22,7 +22,7 @@
   "author": "az22c",
   "license": "MIT",
   "dependencies": {
-    "vue": "^2.6.8"
+    "vue": "2.6.8"
   },
   "devDependencies": {
     "@commitlint/cli": "^7.5.2",
@@ -48,7 +48,7 @@
     "sinon-chai": "^3.3.0",
     "vue-hot-reload-api": "^2.3.3",
     "vue-server-renderer": "^2.6.8",
-    "vue-template-compiler": "^2.6.8",
+    "vue-template-compiler": "2.6.8",
     "vuepress": "^0.14.9",
     "webpack": "^4.28.4",
     "webpack-dev-middleware": "3.6.0"
