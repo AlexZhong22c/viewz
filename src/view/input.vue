@@ -40,28 +40,23 @@
 </script>
 
 <style lang="scss">
-  $height: 32px;
-  $border-color: #999999;
-  $border-color-hover: #666666;
-  $border-radius: 4px;
-  $font-size: 12px;
-  $box-shadow-color: rgba(0, 0, 0, 0.5);
+  @import "src/_var.scss";
   $red: #F1453D;
   .wrapper {
-    font-size: $font-size;
+    font-size: $z-font-size--small;
     display: inline-flex;
     align-items: center;
     > :not(:last-child) {margin-right: .5em; }
     > input {
-      height: $height;
-      border: 1px solid $border-color;
-      border-radius: $border-radius;
+      height: $z-button-height;
+      border: 1px solid $z-border-gray1;
+      border-radius: $z-border-radius;
       // 不是相对单位??
       padding: 0 8px;
       font-size: inherit;
-      &:hover { border-color: $border-color-hover; }
+      &:hover { border-color: $z-border-gray--hover1; }
       &:focus {
-        box-shadow: inset 0 1px 3px $box-shadow-color;
+        box-shadow: inset 0 1px 3px $z-shadow-color-gray1;
         outline: none;
       }
       &[disabled], &[readonly] {
