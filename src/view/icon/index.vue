@@ -5,10 +5,13 @@
 </template>
 
 <script>
-import './svg'
   export default {
     name: 'zIcon',
-    props: ['name']
+    props: ['name'],
+    mounted() {
+      // import('./svg').then(Svg => {})
+      require('./svg')
+    }
   }
 </script>
 
