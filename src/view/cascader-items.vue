@@ -6,7 +6,7 @@
         v-for="(item, index) in items"
         @click="curSelected = item"
         :key="index"
-      >{{item.name}}<span v-if="item.children"> > </span></div>
+      >{{item.name}}<z-icon v-if="item.children" name="right"></z-icon></div>
     </div>
     <div class="z-cascader-items__children" v-if="childrenItems">
       <z-cascader-items :items="childrenItems" :height="height"></z-cascader-items>
@@ -18,6 +18,7 @@
   /**
    * 这个组件不能单独作为自定义组件的根组件：
    */
+  import Icon from './icon'
   export default {
     name: "zCascaderItems",
     props: {
@@ -41,7 +42,8 @@
           return null
         }
       }
-    }
+    },
+    components: { 'z-icon': Icon }
   }
 </script>
 
