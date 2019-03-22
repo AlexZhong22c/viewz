@@ -6,7 +6,7 @@
         v-for="(item, index) in items"
         @click="curSelected = item"
         :key="index"
-      >{{item.name}}<z-icon v-if="item.children" name="right"></z-icon></div>
+      >{{item.name}}<z-icon class="z-cascader-items__arrow" v-if="item.children" name="right"></z-icon></div>
     </div>
     <div class="z-cascader-items__children" v-if="childrenItems">
       <z-cascader-items :items="childrenItems" :height="height"></z-cascader-items>
@@ -35,7 +35,7 @@
       }
     },
     computed: {
-      childrenItems () {
+      childrenItems() {
         if (this.curSelected && this.curSelected.children) {
           return this.curSelected.children
         } else {
@@ -64,10 +64,18 @@
       padding: .3em 0;
     }
     .z-cascader-items__children {
+      // height: 100%;// 应该没什么用
       border-left: 1px solid $z-border-gray--light;
     }
     .z-cascader-items__label {
       padding: .3em 1em;
+
+      display: flex;
+      align-items: center;
+    }
+    .z-cascader-items__arrow {
+      margin-left: 1em;
+      transform: scale(0.5);
     }
   }
 </style>
