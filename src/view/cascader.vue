@@ -39,8 +39,7 @@
 </script>
 
 <style lang="scss">
-  // BUGFIX:没有用到变量就不要@import:
-  // @import "var";
+  @import "var";
   // FIXME: 样式随便写的，不科学的写法：
   .z-cascader {
     position: relative;
@@ -56,8 +55,9 @@
 
       background: white;
 
-      border: 2px solid green;
       display: flex;
+
+      @extend %z-box-shadow1;
     }
   }
 </style>

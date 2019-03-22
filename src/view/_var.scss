@@ -11,6 +11,13 @@ $z-bg-white1: white;
 $z-bg-white--active1: #eeeeee;
 
 $z-border-gray1: #999999;
+$z-border-gray--light: lighten($z-border-gray1, 25%);
 $z-border-gray--hover1: #666666;
 
-$z-shadow-color-gray1: rgba(0, 0, 0, 0.5);
+%z-box-shadow1 {
+  // 还没有调到合适的颜色：
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+}
+%z-box-shadow--focus1 {
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}

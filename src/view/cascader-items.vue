@@ -6,7 +6,7 @@
         v-for="(item, index) in items"
         @click="curSelected = item"
         :key="index"
-      >{{item.name}}</div>
+      >{{item.name}}<span v-if="item.children"> > </span></div>
     </div>
     <div class="z-cascader-items__children" v-if="childrenItems">
       <z-cascader-items :items="childrenItems" :height="height"></z-cascader-items>
@@ -46,17 +46,26 @@
 </script>
 
 <style lang="scss">
+  @import "var";
   // FIXME: 样式随便写的，不科学的写法：
   .z-cascader-items {
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
 
-    // 定高：
+    // 定高，可被用户传入的height通过设置style的方式覆盖掉：
     height: 100px;
     .z-cascader-items__items {
       height: 100%;
-      border: 1px solid red;
+
+      // 补上第一个item label到顶部的距离不足：
+      padding: .3em 0;
+    }
+    .z-cascader-items__children {
+      border-left: 1px solid $z-border-gray--light;
+    }
+    .z-cascader-items__label {
+      padding: .3em 1em;
     }
   }
 </style>

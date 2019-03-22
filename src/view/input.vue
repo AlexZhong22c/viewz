@@ -56,7 +56,7 @@
       font-size: inherit;
       &:hover { border-color: $z-border-gray--hover1; }
       &:focus {
-        box-shadow: inset 0 1px 3px $z-shadow-color-gray1;
+        @extend %z-box-shadow--focus1;
         outline: none;
       }
       &[disabled], &[readonly] {
