@@ -3,7 +3,10 @@
     <div>{{selected && selected[0] && selected[0].name || '空' }}</div>
     <div>{{selected && selected[1] && selected[1].name || '空' }}</div>
     <div>{{selected && selected[2] && selected[2].name || '空' }}</div>
-    <z-cascader :source="source" popover-height="300px" :selected="selected" @update:selected="onUpdateSelected"></z-cascader>
+    <z-cascader :source="source"
+      popover-height="300px"
+      :selected="selected"
+      @update:selected="onUpdateSelected"></z-cascader>
   </div>
 </template>
 
@@ -21,11 +24,19 @@ export default {
           children: [
             {
               name: '市1-1',
-              children: [{ name: '区1-1-1' }, { name: '区1-1-2' }, { name: '区1-1-3' }]
+              children: [
+                { name: '区1-1-1' },
+                { name: '区1-1-2' },
+                { name: '区1-1-3' }
+              ]
             },
             {
               name: '市1-2',
-              children: [{ name: '区1-2-1' }, { name: '区1-2-2' }, { name: '区1-2-3' }]
+              children: [
+                { name: '区1-2-1' },
+                { name: '区1-2-2' },
+                { name: '区1-2-3' }
+              ]
             }
           ]
         },
@@ -34,7 +45,11 @@ export default {
           children: [
             {
               name: '市2-1',
-              children: [{ name: '区2-1-1' }, { name: '区2-1-2' }, { name: '区2-1-3' }]
+              children: [
+                { name: '区2-1-1' },
+                { name: '区2-1-2' },
+                { name: '区2-1-3' }
+              ]
             }
           ]
         },
@@ -67,5 +82,9 @@ export default {
 </script>
 
 <style lang="scss">
-  *, *::before, *::after { box-sizing: border-box; }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 </style>
