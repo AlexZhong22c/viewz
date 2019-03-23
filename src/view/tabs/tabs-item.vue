@@ -12,7 +12,7 @@ export default {
   name: 'zTabsItem',
   // 祖先元素不一定provide，所以eventBus要做非空判断：
   inject: ['eventBus'],
-  data() {
+  data () {
     return {
       active: false
     }
@@ -28,21 +28,21 @@ export default {
     }
   },
   computed: {
-    tabsItemClass() {
+    tabsItemClass () {
       return {
         active: this.active,
         disabled: this.disabled
       }
     }
   },
-  created() {
+  created () {
     this.eventBus &&
       this.eventBus.$on('update:selected', name => {
         this.active = name === this.name
       })
   },
   methods: {
-    onClickItem() {
+    onClickItem () {
       if (this.disabled) {
         return
       }

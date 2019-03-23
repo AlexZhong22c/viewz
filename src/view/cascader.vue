@@ -13,29 +13,29 @@
 </template>
 
 <script>
-  import CascaderItems from './cascader-items'
+import CascaderItems from './cascader-items'
 
-  export default {
-    name: 'zCascader',
-    components: {
-      'z-cascader-items': CascaderItems
+export default {
+  name: 'zCascader',
+  components: {
+    'z-cascader-items': CascaderItems
+  },
+  props: {
+    source: {
+      type: Array
     },
-    props: {
-      source: {
-        type: Array
-      },
-      popoverHeight: {
-        type: String
-      }
-    },
-    data() {
-      return {
-        popoverVisible: false
-      }
-    },
-    created() {
+    popoverHeight: {
+      type: String
     }
+  },
+  data () {
+    return {
+      popoverVisible: false
+    }
+  },
+  created () {
   }
+}
 </script>
 
 <style lang="scss">

@@ -21,6 +21,8 @@ import TabsHead from './view/tabs/tabs-head'
 import TabsItem from './view/tabs/tabs-item'
 import TabsPane from './view/tabs/tabs-pane'
 
+import plugin from './view/plugin'
+
 Vue.component('z-button', Button)
 Vue.component('z-button-group', ButtonGroup)
 Vue.component('z-cascader', Cascader)
@@ -41,16 +43,15 @@ Vue.component('z-tabs-body', TabsBody)
 Vue.component('z-tabs-head', TabsHead)
 Vue.component('z-tabs-item', TabsItem)
 Vue.component('z-tabs-pane', TabsPane)
-
-import plugin from './view/plugin'
 // import Toast from './view/toast'
 // Vue.component('z-toast', Toast)
 // 通过js实例方法创建Toast组件实例：
 Vue.use(plugin)
 
+/* eslint-disable no-new */
 new Vue({
   el: '#app',
-  data() {
+  data () {
     return {
       source: [{
         name: '浙江',
@@ -58,19 +59,19 @@ new Vue({
           {
             name: '杭州',
             children: [
-              {name: '上城'},
-              {name: '下城'},
-              {name: '江干'},
+              { name: '上城' },
+              { name: '下城' },
+              { name: '江干' }
             ]
           },
           {
             name: '嘉兴',
             children: [
-              {name: '南湖'},
-              {name: '秀洲'},
-              {name: '嘉善'},
+              { name: '南湖' },
+              { name: '秀洲' },
+              { name: '嘉善' }
             ]
-          },
+          }
         ]
       }, {
         name: '福建',
@@ -78,11 +79,11 @@ new Vue({
           {
             name: '福州',
             children: [
-              {name: '鼓楼'},
-              {name: '台江'},
-              {name: '仓山'},
+              { name: '鼓楼' },
+              { name: '台江' },
+              { name: '仓山' }
             ]
-          },
+          }
         ]
       }, {
         name: '安徽',

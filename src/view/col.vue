@@ -5,67 +5,66 @@
 </template>
 
 <script>
-  const validator = value => {
-    const keys = Object.keys(value)
-    for (const key of keys)
-      if (!['span', 'offset'].includes(key))
-        return false
-
-    return true
+const validator = value => {
+  const keys = Object.keys(value)
+  for (const key of keys) {
+    if (!['span', 'offset'].includes(key)) { return false }
   }
-  export default {
-    name: 'zCol',
-    props: {
-      span: {
-        type: [ Number, String ]
-      },
-      offset: {
-        type: [ Number, String ]
-      },
-      ipad: { type: Object, validator },
-      narrowPc: { type: Object, validator },
-      pc: { type: Object, validator },
-      widePc: { type: Object, validator }
+
+  return true
+}
+export default {
+  name: 'zCol',
+  props: {
+    span: {
+      type: [ Number, String ]
     },
-    data() {
+    offset: {
+      type: [ Number, String ]
+    },
+    ipad: { type: Object, validator },
+    narrowPc: { type: Object, validator },
+    pc: { type: Object, validator },
+    widePc: { type: Object, validator }
+  },
+  data () {
+    return {
+      gutter: 0
+    }
+  },
+  methods: {
+    createClasses (propObj, str = '') {
+      if (!propObj) { return [] }
+      let array = []
+      if (propObj.span) { array.push(`z-col-${str}${propObj.span}`) }
+      if (propObj.offset) { array.push(`z-offset-${str}${propObj.offset}`) }
+      return array
+    }
+  },
+  computed: {
+    colClass () {
+      const {
+        span, offset, ipad, narrowPc, pc, widePc,
+        createClasses
+      } = this
+      return [
+        ...createClasses({ span, offset }),
+        ...createClasses(ipad, 'ipad-'),
+        ...createClasses(narrowPc, 'narrow-pc-'),
+        ...createClasses(pc, 'pc-'),
+        ...createClasses(widePc, 'wide-pc-')
+      ]
+    },
+    colStyle () {
+      const { gutter } = this
       return {
-        gutter: 0
-      }
-    },
-    methods: {
-      createClasses (propObj, str = '') {
-        if (!propObj) { return [] }
-        let array = []
-        if (propObj.span) { array.push(`z-col-${str}${propObj.span}`) }
-        if (propObj.offset) { array.push(`z-offset-${str}${propObj.offset}`) }
-        return array
-      }
-    },
-    computed: {
-      colClass() {
-        const {
-          span, offset, ipad, narrowPc, pc, widePc,
-          createClasses
-        } = this
-        return [
-          ...createClasses({ span, offset }),
-          ...createClasses(ipad, 'ipad-'),
-          ...createClasses(narrowPc, 'narrow-pc-'),
-          ...createClasses(pc, 'pc-'),
-          ...createClasses(widePc, 'wide-pc-'),
-        ]
-      },
-      colStyle() {
-        const { gutter } = this
-        return {
-          paddingLeft: `${gutter/2}px`,
-          paddingRight:`${gutter/2}px`
-        }
+        paddingLeft: `${gutter / 2}px`,
+        paddingRight: `${gutter / 2}px`
       }
     }
   }
+}
 </script>
-
 
 <style lang="scss">
   .z-col {

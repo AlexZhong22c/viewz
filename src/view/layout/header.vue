@@ -5,9 +5,9 @@
 </template>
 
 <script>
-  export default {
-    name: 'zHeader'
-  }
+export default {
+  name: 'zHeader'
+}
 </script>
 
 <style lang="scss">

@@ -30,15 +30,15 @@ export default {
     trigger: {
       type: String,
       default: 'click',
-      validator(value) {
+      validator (value) {
         return ['click', 'hover'].includes(value)
       }
     }
   },
-  data() {
+  data () {
     return { visible: false }
   },
-  mounted() {
+  mounted () {
     // 需要做的是open和close两种事件。对于type="click"来说是两次点击；对于type="hover"来说就是鼠标移入和移出。
     if (this.trigger === 'click') {
       this.$refs.triggerWrapper.addEventListener('click', this.onClickTrigger)
@@ -47,7 +47,7 @@ export default {
       this.$refs.popover.addEventListener('mouseleave', this.close)
     }
   },
-  destroyed() {
+  destroyed () {
     // 写在html模板的属性的事件绑定，vue会帮你解绑；而这些不会：
     if (this.trigger === 'click') {
       this.$refs.triggerWrapper.removeEventListener('click', this.onClickTrigger)
@@ -57,12 +57,12 @@ export default {
     }
   },
   computed: {
-    contentWrapperClass() {
+    contentWrapperClass () {
       return [`position-${this.position}`]
     }
   },
   methods: {
-    positionContent() {
+    positionContent () {
       const { contentWrapper, triggerWrapper } = this.$refs
       // 这句能否放在设置left top那两句之后??
       document.body.appendChild(contentWrapper)
@@ -73,7 +73,7 @@ export default {
       const positionMap = {
         top: { top: top + window.scrollY, left: left + window.scrollX },
         bottom: { top: top + height + window.scrollY, left: left + window.scrollX },
-        left: { top: top + window.scrollY + ( height - cwHeight ) / 2, left: left + window.scrollX },
+        left: { top: top + window.scrollY + (height - cwHeight) / 2, left: left + window.scrollX },
         right: { top: top + window.scrollY + (height - cwHeight) / 2, left: left + window.scrollX + width }
       }
       contentWrapper.style.left = positionMap[this.position].left + 'px'
@@ -90,34 +90,34 @@ export default {
      * `绑定对象`和该对象的事件：document / click
      * 回调函数(`触发绑定事件`后执行)：是否关闭弹窗和是否卸载该绑定
      */
-    bindClickDocumentToClosePopover(e) {
-        const { popover, contentWrapper } = this.$refs
-        // 因为冒泡，它们都触发了document的click：
-        // 由trigger引发: true false 不执行close，但由另一处代码决定是否close(这就是内聚close函数的好处)
-        // 由弹窗dom引发: false true 不执行close
-        // 由document引发: false false 执行close
-        // 由其他的trigger(dom的引用内存地址不同)引发： false false 执行close
-        if (popover &&
+    bindClickDocumentToClosePopover (e) {
+      const { popover, contentWrapper } = this.$refs
+      // 因为冒泡，它们都触发了document的click：
+      // 由trigger引发: true false 不执行close，但由另一处代码决定是否close(这就是内聚close函数的好处)
+      // 由弹窗dom引发: false true 不执行close
+      // 由document引发: false false 执行close
+      // 由其他的trigger(dom的引用内存地址不同)引发： false false 执行close
+      if (popover &&
           (popover === e.target || popover.contains(e.target))
-        ) { return }
-        // contentWrapper的DOM不在popover的DOM中，所以要另外判断：
-        if (contentWrapper &&
+      ) { return }
+      // contentWrapper的DOM不在popover的DOM中，所以要另外判断：
+      if (contentWrapper &&
           (contentWrapper === e.target || contentWrapper.contains(e.target))
-        ) { return }
-        this.close()
+      ) { return }
+      this.close()
     },
-    open() {
+    open () {
       this.visible = true
       this.$nextTick(() => {
         this.positionContent()
         document.addEventListener('click', this.bindClickDocumentToClosePopover)
       })
     },
-    close() {
+    close () {
       this.visible = false
       document.removeEventListener('click', this.bindClickDocumentToClosePopover)
     },
-    onClickTrigger(event) {
+    onClickTrigger (event) {
       if (this.visible) {
         this.close()
       } else {

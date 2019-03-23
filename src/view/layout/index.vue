@@ -5,23 +5,23 @@
 </template>
 
 <script>
-  export default {
-    name: 'zLayout',
-    data () {
-      return {
-        layoutClass: {
-          hasSider: false
-        }
+export default {
+  name: 'zLayout',
+  data () {
+    return {
+      layoutClass: {
+        hasSider: false
       }
-    },
-    mounted () {
-      this.$children.forEach(vm => {
-        if (vm.$options.name === 'zSider') {
-          this.layoutClass.hasSider = true
-        }
-      })
     }
+  },
+  mounted () {
+    this.$children.forEach(vm => {
+      if (vm.$options.name === 'zSider') {
+        this.layoutClass.hasSider = true
+      }
+    })
   }
+}
 </script>
 
 <style lang="scss">

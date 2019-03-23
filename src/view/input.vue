@@ -2,7 +2,7 @@
   <div class="wrapper" :class="{error}">
     <!-- readonly 和 disabled 还是有区别的，readonly还能获得焦点的： -->
     <!-- 原生change事件直传给上一层： -->
-    <input :value="value" type="text" :disabled="disabled" :readonly="readonly" 
+    <input :value="value" type="text" :disabled="disabled" :readonly="readonly"
       @change="$emit('change', $event.target.value)"
       @input="$emit('input', $event.target.value)"
       @focus="$emit('focus', $event.target.value)"
@@ -16,27 +16,27 @@
 </template>
 
 <script>
-  import Icon from './icon'
-  export default {
-    components: { 'z-icon': Icon },
-    name: 'zInput',
-    props: {
-      value: {
-        type: String
-      },
-      disabled: {
-        type: Boolean,
-        default: false
-      },
-      readonly: {
-        type: Boolean,
-        default: false
-      },
-      error: {
-        type: String
-      }
+import Icon from './icon'
+export default {
+  components: { 'z-icon': Icon },
+  name: 'zInput',
+  props: {
+    value: {
+      type: String
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    readonly: {
+      type: Boolean,
+      default: false
+    },
+    error: {
+      type: String
     }
   }
+}
 </script>
 
 <style lang="scss">

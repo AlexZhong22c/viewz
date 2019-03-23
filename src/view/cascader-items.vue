@@ -15,36 +15,36 @@
 </template>
 
 <script>
-  /**
-   * 这个组件不能单独作为自定义组件的根组件：
-   */
-  import Icon from './icon'
-  export default {
-    name: "zCascaderItems",
-    props: {
-      items: {
-        type: Array
-      },
-      height: {
-        type: String
-      }
+/**
+ * 这个组件不能单独作为自定义组件的根组件：
+ */
+import Icon from './icon'
+export default {
+  name: 'zCascaderItems',
+  props: {
+    items: {
+      type: Array
     },
-    data () {
-      return {
-        curSelected: null
+    height: {
+      type: String
+    }
+  },
+  data () {
+    return {
+      curSelected: null
+    }
+  },
+  computed: {
+    childrenItems () {
+      if (this.curSelected && this.curSelected.children) {
+        return this.curSelected.children
+      } else {
+        return null
       }
-    },
-    computed: {
-      childrenItems() {
-        if (this.curSelected && this.curSelected.children) {
-          return this.curSelected.children
-        } else {
-          return null
-        }
-      }
-    },
-    components: { 'z-icon': Icon }
-  }
+    }
+  },
+  components: { 'z-icon': Icon }
+}
 </script>
 
 <style lang="scss">

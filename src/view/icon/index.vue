@@ -5,14 +5,14 @@
 </template>
 
 <script>
-  export default {
-    name: 'zIcon',
-    props: ['name'],
-    mounted() {
-      // import('./svg').then(Svg => {})
-      require('./svg')
-    }
+export default {
+  name: 'zIcon',
+  props: ['name'],
+  mounted () {
+    // import('./svg').then(Svg => {})
+    require('./svg')
   }
+}
 </script>
 
 <style lang="scss">

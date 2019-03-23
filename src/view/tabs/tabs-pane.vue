@@ -10,7 +10,7 @@
 export default {
   name: 'zTabsPane',
   inject: ['eventBus'],
-  data() {
+  data () {
     return {
       active: false
     }
@@ -22,13 +22,13 @@ export default {
     }
   },
   computed: {
-    tabsPaneClass() {
+    tabsPaneClass () {
       return {
         active: this.active
       }
     }
   },
-  created() {
+  created () {
     // v-if="active"应该可以转移到上一层的：
     this.eventBus.$on('update:selected', name => {
       this.active = name === this.name

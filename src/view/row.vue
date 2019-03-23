@@ -13,25 +13,25 @@ export default {
     },
     align: {
       type: String,
-      validator(value) {
+      validator (value) {
         return ['left', 'right', 'center'].includes(value)
       }
     }
   },
   computed: {
-    rowClass() {
+    rowClass () {
       const { align } = this
-      return [ align && `z-row-align-${align}`]
+      return [ align && `z-row-align-${align}` ]
     },
-    rowStyle() {
+    rowStyle () {
       const { gutter } = this
       return {
-        marginLeft: `-${gutter/2}px`,
-        marginRight: `-${gutter/2}px`
+        marginLeft: `-${gutter / 2}px`,
+        marginRight: `-${gutter / 2}px`
       }
     }
   },
-  mounted() {
+  mounted () {
     this.$children.forEach(item => {
       item.gutter = this.gutter
     })

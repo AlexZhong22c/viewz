@@ -14,89 +14,89 @@
 </template>
 
 <script>
-  // 能否优化 DefaultCloseButtonText??:
-  const DefaultCloseButtonText = '关闭'
-  export default {
-    name: 'zToast',
-    data() {
-      return {
-        DefaultCloseButtonText
+// 能否优化 DefaultCloseButtonText??:
+const DefaultCloseButtonText = '关闭'
+export default {
+  name: 'zToast',
+  data () {
+    return {
+      DefaultCloseButtonText
+    }
+  },
+  props: {
+    enableHTML: {
+      type: Boolean,
+      default: false
+    },
+    position: {
+      type: String,
+      default: 'top',
+      validator (value) {
+        return ['top', 'bottom', 'middle'].includes(value)
       }
     },
-    props: {
-      enableHTML: {
-        type: Boolean,
-        default: false
-      },
-      position: {
-        type: String,
-        default: 'top',
-        validator(value) {
-          return ['top', 'bottom', 'middle'].includes(value)
-        }
-      },
-      // 应该改成以毫秒为单位的：
-      autoClose: {
-        type: [ Boolean, Number ],
-        default: 3,
-        validator(value) {
-          return value === false || typeof value === 'number';
-        }
-      },
-      // 用默认值使得代码(尤其是判断)简洁很多：
-      closeButtonOption: {
-        type: Object,
-        default() {
-          return {
-            text: DefaultCloseButtonText,
-            callback: undefined
-          }
-        }
+    // 应该改成以毫秒为单位的：
+    autoClose: {
+      type: [ Boolean, Number ],
+      default: 3,
+      validator (value) {
+        return value === false || typeof value === 'number'
       }
     },
-    mounted () {
-      this.refreshVerticalLineStyle()
-      // 从这个元素被挂载之时开始计时：
-      this.initAutoClose()
-    },
-    computed: {
-      toastClass() {
+    // 用默认值使得代码(尤其是判断)简洁很多：
+    closeButtonOption: {
+      type: Object,
+      default () {
         return {
-          [`position-${this.position}`]: true
-        }
-      }
-    },
-    methods: {
-      close() {
-        // 一定要remove才能从页面上去掉：
-        this.$el.remove()
-        this.$emit('beforeClose')
-        this.$destroy()
-      },
-      refreshVerticalLineStyle() {
-        this.$nextTick(() => {
-          // height: 100%:
-          this.$refs['vertical-line'].style.height =
-            `${this.$refs['z-toast'].getBoundingClientRect().height}px`
-        })
-      },
-      initAutoClose() {
-        if (this.autoClose) {
-          setTimeout(() => {
-            this.close()
-          }, this.autoClose * 1000)
-        }
-      },
-      // 设置的这个时机好像不是特别好，目前，自动关闭的话就不执行这个了:
-      onClickClose () {
-        this.close()
-        if (this.closeButtonOption && typeof this.closeButtonOption.callback === 'function') {
-          // 传递 toast实例过去：
-          this.closeButtonOption.callback(this)
+          text: DefaultCloseButtonText,
+          callback: undefined
         }
       }
     }
+  },
+  mounted () {
+    this.refreshVerticalLineStyle()
+    // 从这个元素被挂载之时开始计时：
+    this.initAutoClose()
+  },
+  computed: {
+    toastClass () {
+      return {
+        [`position-${this.position}`]: true
+      }
+    }
+  },
+  methods: {
+    close () {
+      // 一定要remove才能从页面上去掉：
+      this.$el.remove()
+      this.$emit('beforeClose')
+      this.$destroy()
+    },
+    refreshVerticalLineStyle () {
+      this.$nextTick(() => {
+        // height: 100%:
+        this.$refs['vertical-line'].style.height =
+            `${this.$refs['z-toast'].getBoundingClientRect().height}px`
+      })
+    },
+    initAutoClose () {
+      if (this.autoClose) {
+        setTimeout(() => {
+          this.close()
+        }, this.autoClose * 1000)
+      }
+    },
+    // 设置的这个时机好像不是特别好，目前，自动关闭的话就不执行这个了:
+    onClickClose () {
+      this.close()
+      if (this.closeButtonOption && typeof this.closeButtonOption.callback === 'function') {
+        // 传递 toast实例过去：
+        this.closeButtonOption.callback(this)
+      }
+    }
   }
+}
 </script>
 
 <style lang="scss">

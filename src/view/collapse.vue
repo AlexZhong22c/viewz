@@ -5,34 +5,34 @@
 </template>
 
 <script>
-  import Vue from 'vue'
-  export default {
-    name: 'zCollapse',
-    props: {
-      single: {
-        type: Boolean,
-        default: false
-      },
-      // 不支持Number??
-      selected: {
-        type: Array
-      }
+import Vue from 'vue'
+export default {
+  name: 'zCollapse',
+  props: {
+    single: {
+      type: Boolean,
+      default: false
     },
-    data () {
-      return {
-        eventBus: new Vue()
-      }
-    },
-    provide () {
-      // TODO:之后再想办法在需要的时候才provide inject eventBus:
-      return {
-        eventBus: this.eventBus
-      }
-    },
-    mounted () {
-      this.eventBus.$emit('update:selected', this.selected)
+    // 不支持Number??
+    selected: {
+      type: Array
+    }
+  },
+  data () {
+    return {
+      eventBus: new Vue()
+    }
+  },
+  provide () {
+    // TODO:之后再想办法在需要的时候才provide inject eventBus:
+    return {
+      eventBus: this.eventBus
+    }
+  },
+  mounted () {
+    this.eventBus.$emit('update:selected', this.selected)
 
-      this.eventBus.$on('update:addSelected',
+    this.eventBus.$on('update:addSelected',
       name => {
         let selectedCopy = JSON.parse(JSON.stringify(this.selected))
         if (this.single) {
@@ -44,7 +44,7 @@
         this.$emit('update:selected', selectedCopy)
       })
 
-      this.eventBus.$on('update:removeSelected',
+    this.eventBus.$on('update:removeSelected',
       name => {
         let selectedCopy = JSON.parse(JSON.stringify(this.selected))
         const index = selectedCopy.indexOf(name)
@@ -52,8 +52,8 @@
         this.eventBus.$emit('update:selected', selectedCopy)
         this.$emit('update:selected', selectedCopy)
       })
-    }
   }
+}
 </script>
 
 <style scoped lang="scss">

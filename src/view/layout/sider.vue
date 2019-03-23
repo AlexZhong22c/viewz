@@ -6,14 +6,14 @@
 </template>
 
 <script>
-  export default {
-    name: 'zSider',
-    data() {
-      return {
-        visible: true
-      }
+export default {
+  name: 'zSider',
+  data () {
+    return {
+      visible: true
     }
   }
+}
 </script>
 
 <style lang="scss">

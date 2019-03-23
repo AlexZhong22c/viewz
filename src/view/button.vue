@@ -10,24 +10,24 @@
 </template>
 
 <script>
-  export default {
-    name: 'zButton',
-    props: {
-      icon: {},
-      loading: {
-        type: Boolean,
-        default: false
-      },
-      iconPosition: {
-        type: String,
-        default: 'left',
-        /* validator必须有返回值 */
-        validator(value) {
-          return ['left', 'right'].includes(value)
-        }
+export default {
+  name: 'zButton',
+  props: {
+    icon: {},
+    loading: {
+      type: Boolean,
+      default: false
+    },
+    iconPosition: {
+      type: String,
+      default: 'left',
+      /* validator必须有返回值 */
+      validator (value) {
+        return ['left', 'right'].includes(value)
       }
     }
   }
+}
 </script>
 
 <style lang="scss">

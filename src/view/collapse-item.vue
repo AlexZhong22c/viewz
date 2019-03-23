@@ -10,27 +10,27 @@
 </template>
 
 <script>
-  export default {
-    name: "zCollapseItem",
-    props: {
-      title: {
-        type: String,
-        required: true
-      },
-      // 不支持Number，难受：
-      name: {
-        type: String,
-        required: true
-      }
+export default {
+  name: 'zCollapseItem',
+  props: {
+    title: {
+      type: String,
+      required: true
     },
-    data () {
-      return {
-        open: false
-      }
-    },
-    inject: ['eventBus'],
-    mounted () {
-      this.eventBus && this.eventBus.$on('update:selected',
+    // 不支持Number，难受：
+    name: {
+      type: String,
+      required: true
+    }
+  },
+  data () {
+    return {
+      open: false
+    }
+  },
+  inject: ['eventBus'],
+  mounted () {
+    this.eventBus && this.eventBus.$on('update:selected',
       names => {
         if (names.indexOf(this.name) >= 0) {
           this.open = true
@@ -38,18 +38,18 @@
           this.open = false
         }
       })
-    },
-    methods: {
-      // 先通知同步所有组件该事件，再根据事件改变自己的状态：
-      toggle () {
-        if (this.open) {
-          this.eventBus && this.eventBus.$emit('update:removeSelected', this.name)
-        } else {
-          this.eventBus && this.eventBus.$emit('update:addSelected', this.name)
-        }
+  },
+  methods: {
+    // 先通知同步所有组件该事件，再根据事件改变自己的状态：
+    toggle () {
+      if (this.open) {
+        this.eventBus && this.eventBus.$emit('update:removeSelected', this.name)
+      } else {
+        this.eventBus && this.eventBus.$emit('update:addSelected', this.name)
       }
-    },
+    }
   }
+}
 </script>
 
 <style scoped lang="scss">

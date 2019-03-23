@@ -17,30 +17,30 @@ export default {
     direction: {
       type: String,
       default: 'horizontal',
-      validator(value) {
+      validator (value) {
         return ['horizontal', 'vertical'].includes(value)
       }
     }
   },
-  data() {
+  data () {
     return {
       eventBus: new Vue()
     }
   },
-  provide() {
+  provide () {
     return {
       eventBus: this.eventBus
     }
   },
   methods: {
-    checkChildrenValid() {
+    checkChildrenValid () {
       if (this.$children.length === 0) {
         throw new Error(
           'tabs的子组件应该是tabs-head和tabs-body，但你没有设置子组件'
         )
       }
     },
-    updateEventBusSelected() {
+    updateEventBusSelected () {
       this.$children.forEach(vm => {
         if (vm.$options.name === 'zTabsHead') {
           vm.$children.forEach(childVm => {
@@ -55,7 +55,7 @@ export default {
       })
     }
   },
-  mounted() {
+  mounted () {
     this.checkChildrenValid()
     this.updateEventBusSelected()
   }

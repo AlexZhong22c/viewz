@@ -13,7 +13,7 @@
 export default {
   name: 'zTabsHead',
   inject: ['eventBus'],
-  mounted() {
+  mounted () {
     this.eventBus.$on('update:selected', (item, vm) => {
       const { width, left } = vm.$el.getBoundingClientRect()
       this.$refs.bottomLine.style.width = `${width}px`

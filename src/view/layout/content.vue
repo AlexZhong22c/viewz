@@ -5,9 +5,9 @@
 </template>
 
 <script>
-  export default {
-    name: 'zContent'
-  }
+export default {
+  name: 'zContent'
+}
 </script>
 
 <style lang="scss">
