@@ -42,7 +42,7 @@ export default {
     }
   },
   computed: {
-    result() {
+    result () {
       return this.selected.map(item => item.name).join('/')
     }
   },

@@ -87,6 +87,7 @@ export default {
 
   // 定高，可被用户传入的height通过设置style的方式覆盖掉：
   height: 100px;
+  overflow: auto;
   .z-cascader-items__items {
     height: 100%;
 
