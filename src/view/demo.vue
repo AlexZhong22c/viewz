@@ -6,7 +6,8 @@
     <z-cascader :source="source"
       popover-height="300px"
       :selected="selected"
-      @update:selected="onUpdateSelected"></z-cascader>
+      @update:selected="onUpdateSelected"
+      :loadData="loadData"></z-cascader>
   </div>
 </template>
 
@@ -37,18 +38,14 @@ export default {
     })
   },
   methods: {
+    loadData (targetItem, handler) {
+      const { id } = targetItem
+      ajax(id).then(result => {
+        handler(result)
+      })
+    },
     onUpdateSelected (selected) {
       this.selected = selected
-      // test start
-      const targetId = selected[0].id
-      // test end
-      ajax(targetId).then(result => {
-        const targetItem = this.source.find(item => item.id === targetId)
-        if (targetItem) {
-          // targetItem.children = result
-          this.$set(targetItem, 'children', result)
-        }
-      })
     }
   },
   components: { 'z-cascader': Cascader }

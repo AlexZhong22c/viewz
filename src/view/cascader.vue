@@ -34,6 +34,9 @@ export default {
     selected: {
       type: Array,
       default: () => []
+    },
+    loadData: {
+      type: Function
     }
   },
   data () {
@@ -49,6 +52,14 @@ export default {
   methods: {
     onUpdateSelected (selected) {
       this.$emit('update:selected', selected)
+      // bug:重复点击同一个item会重复触发请求(应该没必要)：
+      const targetItem = selected[selected.length - 1]
+      const handler = result => {
+        // todo
+        // wrong(因为经过克隆，已经是另外一个对象引用了):
+        // this.$set(targetItem, 'children', result)
+      }
+      this.loadData(targetItem, handler)
     }
   },
   created () {}
