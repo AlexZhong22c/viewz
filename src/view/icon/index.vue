@@ -10,6 +10,7 @@ export default {
   props: ['name'],
   mounted () {
     // import('./svg').then(Svg => {})
+    // eslint-disable-next-line
     require('./svg')
   }
 }
