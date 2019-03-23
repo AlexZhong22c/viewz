@@ -1,6 +1,9 @@
 <template>
   <div>
-    hi<z-cascader :source="source" popover-height="300px"></z-cascader>
+    <div>{{selected && selected[0] && selected[0].name || '空' }}</div>
+    <div>{{selected && selected[1] && selected[1].name || '空' }}</div>
+    <div>{{selected && selected[2] && selected[2].name || '空' }}</div>
+    <z-cascader :source="source" popover-height="300px" :selected="selected" @update:selected="onUpdateSelected"></z-cascader>
   </div>
 </template>
 
@@ -11,40 +14,41 @@ export default {
   name: 'demo',
   data () {
     return {
+      selected: [],
       source: [
         {
-          name: '浙江',
+          name: '省1',
           children: [
             {
-              name: '杭州',
-              children: [{ name: '上城' }, { name: '下城' }, { name: '江干' }]
+              name: '市1-1',
+              children: [{ name: '区1-1-1' }, { name: '区1-1-2' }, { name: '区1-1-3' }]
             },
             {
-              name: '嘉兴',
-              children: [{ name: '南湖' }, { name: '秀洲' }, { name: '嘉善' }]
+              name: '市1-2',
+              children: [{ name: '区1-2-1' }, { name: '区1-2-2' }, { name: '区1-2-3' }]
             }
           ]
         },
         {
-          name: '福建',
+          name: '省2',
           children: [
             {
-              name: '福州',
-              children: [{ name: '鼓楼' }, { name: '台江' }, { name: '仓山' }]
+              name: '市2-1',
+              children: [{ name: '区2-1-1' }, { name: '区2-1-2' }, { name: '区2-1-3' }]
             }
           ]
         },
         {
-          name: '安徽',
+          name: '省3',
           children: [
             {
-              name: '合肥',
+              name: '市3',
               children: [
                 {
-                  name: '瑶海'
+                  name: '区3-1'
                 },
                 {
-                  name: '庐阳'
+                  name: '区3-2'
                 }
               ]
             }
@@ -53,7 +57,11 @@ export default {
       ]
     }
   },
-  methods: {},
+  methods: {
+    onUpdateSelected (selected) {
+      this.selected = selected
+    }
+  },
   components: { 'z-cascader': Cascader }
 }
 </script>

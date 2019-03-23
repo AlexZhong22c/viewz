@@ -7,6 +7,8 @@
         :items="source"
         class="z-cascader__popover"
         :height="popoverHeight"
+        :selected="selected"
+        @update:selected="onUpdateSelected"
       ></z-cascader-items>
     </div>
   </div>
@@ -26,11 +28,20 @@ export default {
     },
     popoverHeight: {
       type: String
+    },
+    selected: {
+      type: Array,
+      default: () => []
     }
   },
   data () {
     return {
       popoverVisible: false
+    }
+  },
+  methods: {
+    onUpdateSelected (selected) {
+      this.$emit('update:selected', selected)
     }
   },
   created () {

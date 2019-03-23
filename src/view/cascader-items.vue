@@ -4,12 +4,12 @@
       <div
         class="z-cascader-items__label"
         v-for="(item, index) in items"
-        @click="curSelected = item"
+        @click="onClickItem(item)"
         :key="index"
       >{{item.name}}<z-icon class="z-cascader-items__arrow" v-if="item.children" name="right"></z-icon></div>
     </div>
     <div class="z-cascader-items__children" v-if="childrenItems">
-      <z-cascader-items :items="childrenItems" :height="height"></z-cascader-items>
+      <z-cascader-items :items="childrenItems" :height="height" :level="level + 1" :selected="selected" @update:selected="onChildUpdateSelected"></z-cascader-items>
     </div>
   </div>
 </template>
@@ -27,17 +27,39 @@ export default {
     },
     height: {
       type: String
+    },
+    selected: {
+      type: Array,
+      default: () => []
+    },
+    level: {
+      type: Number,
+      default: 0
     }
   },
   data () {
     return {
-      curSelected: null
+    }
+  },
+  methods: {
+    onClickItem (item) {
+      const copy = JSON.parse(JSON.stringify(this.selected))
+      copy[this.level] = item
+      // 而不是分开传参：this.$emit('updateSelected', { level: this.level, value: item })
+      this.$emit('update:selected', copy)
+    },
+    /**
+     * 帮子组件往上传：
+     */
+    onChildUpdateSelected (selected) {
+      this.$emit('update:selected', selected)
     }
   },
   computed: {
     childrenItems () {
-      if (this.curSelected && this.curSelected.children) {
-        return this.curSelected.children
+      const curSelected = this.selected[this.level]
+      if (curSelected && curSelected.children) {
+        return curSelected.children
       } else {
         return null
       }
