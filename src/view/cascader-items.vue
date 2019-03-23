@@ -49,10 +49,12 @@ export default {
   },
   methods: {
     onClickItem (item) {
-      const copy = JSON.parse(JSON.stringify(this.selected))
-      copy[this.level] = item
-      // 而不是分开传参：this.$emit('updateSelected', { level: this.level, value: item })
-      this.$emit('update:selected', copy)
+      const { selected, level } = this
+      const result = JSON.parse(JSON.stringify(selected))
+      result[level] = item
+      result.splice(level + 1)
+      // 而不是分开传参：this.$emit('updateSelected', { level, value: item })
+      this.$emit('update:selected', result)
     },
     /**
      * 帮子组件往上传：
