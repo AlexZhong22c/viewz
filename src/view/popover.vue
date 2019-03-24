@@ -117,7 +117,7 @@ export default {
       this.visible = false
       document.removeEventListener('click', this.bindClickDocumentToClosePopover)
     },
-    onClickTrigger (event) {
+    onClickTrigger () {
       if (this.visible) {
         this.close()
       } else {

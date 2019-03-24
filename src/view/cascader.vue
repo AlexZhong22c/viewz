@@ -1,7 +1,7 @@
 <template>
   <div class="z-cascader">
     <div class="z-cascader__trigger"
-      @click="visible = !visible">
+      @click="onClickTrigger">
       <!-- 加&nbsp;顶着，不因为突变为有字在里面而高度变化 -->
       {{ result || '&nbsp;' }}
     </div>
@@ -51,6 +51,19 @@ export default {
     }
   },
   methods: {
+    open () {
+      this.visible = true
+    },
+    close () {
+      this.visible = false
+    },
+    onClickTrigger () {
+      if (this.visible) {
+        this.close()
+      } else {
+        this.open()
+      }
+    },
     onUpdateSelected (selected) {
       this.$emit('update:selected', selected)
       // bug:重复点击同一个item会重复触发请求(应该没必要)：
