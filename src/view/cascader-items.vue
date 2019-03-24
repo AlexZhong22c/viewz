@@ -19,6 +19,7 @@
         :height="height"
         :level="level + 1"
         :selected="selected"
+        :loadData="loadData"
         @update:selected="onChildUpdateSelected"></z-cascader-items>
     </div>
   </div>
