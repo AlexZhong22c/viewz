@@ -116,6 +116,7 @@ export default {
 @import 'var';
 // FIXME: 样式随便写的，不科学的写法：
 .z-cascader {
+  display: inline-block;
   position: relative;
   .z-cascader__trigger {
     height: $z-button-height;

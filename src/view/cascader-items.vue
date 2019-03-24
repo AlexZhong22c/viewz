@@ -119,6 +119,9 @@ export default {
     display: flex;
     align-items: center;
 
+    // 因为cascader的display: inline-block:
+    white-space: nowrap;
+
     cursor: pointer;
     &:hover {
       background: $z-bg-white--active1;
