@@ -36,9 +36,7 @@ const bindClickDocumentToClosePopover = e => {
   const { target } = e
   callbacks.forEach(item => {
     const el = item.el
-    if (target === el || el.contains(target)) {
-      // return
-    } else {
+    if (target !== el && !el.contains(target)) {
       item.callback()
     }
   })
