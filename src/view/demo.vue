@@ -8,6 +8,7 @@
       popover-height="300px"
       :selected="selected"
       @update:selected="onUpdateSelected"
+      :loadData="loadData"
     ></z-cascader>
   </div>
 </template>
@@ -44,58 +45,9 @@ export default {
     }
   },
   created () {
-    this.source = [
-      {
-        name: '省1',
-        children: [
-          {
-            name: '市1-1',
-            children: [
-              { name: '区1-1-1' },
-              { name: '区1-1-2' },
-              { name: '区1-1-3' }
-            ]
-          },
-          {
-            name: '市1-2',
-            children: [
-              { name: '区1-2-1' },
-              { name: '区1-2-2' },
-              { name: '区1-2-3' }
-            ]
-          }
-        ]
-      },
-      {
-        name: '省2',
-        children: [
-          {
-            name: '市2-1',
-            children: [
-              { name: '区2-1-1' },
-              { name: '区2-1-2' },
-              { name: '区2-1-3' }
-            ]
-          }
-        ]
-      },
-      {
-        name: '省3',
-        children: [
-          {
-            name: '市3',
-            children: [
-              {
-                name: '区3-1'
-              },
-              {
-                name: '区3-2'
-              }
-            ]
-          }
-        ]
-      }
-    ]
+    ajax(0).then(result => {
+      this.source = result
+    })
   },
   methods: {
     loadData (targetItem, handler) {
