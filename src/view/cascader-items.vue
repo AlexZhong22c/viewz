@@ -6,7 +6,7 @@
         v-for="(item, index) in items"
         @click="onClickItem(item)"
         :key="index">{{item.name}}<z-icon class="z-cascader-items__arrow"
-          v-if="item.children"
+          v-if="!item.isLeaf"
           name="right"></z-icon>
       </div>
     </div>

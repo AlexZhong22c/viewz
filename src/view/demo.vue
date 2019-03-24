@@ -20,6 +20,16 @@ function ajax (pid = 0) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       const result = db.filter(item => item.pid === pid)
+
+      result.forEach(rItem => {
+        // 这部分是模拟，实际上只有后端才知道是否isLeaf：
+        if (db.find(item => item.pid === rItem.id)) {
+          rItem.isLeaf = false
+        } else {
+          rItem.isLeaf = true
+        }
+      })
+
       resolve(result)
     }, 3 * 100)
   })

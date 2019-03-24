@@ -88,7 +88,10 @@ export default {
           this.$emit('update:source', copy)
         }
       }
-      this.loadData(targetItem, handler)
+      // 最好就是用户的后端来告知isLeaf：
+      if (!targetItem.isLeaf) {
+        this.loadData && this.loadData(targetItem, handler)
+      }
     }
   },
   created () {}
