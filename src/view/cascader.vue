@@ -54,10 +54,39 @@ export default {
       this.$emit('update:selected', selected)
       // bug:重复点击同一个item会重复触发请求(应该没必要)：
       const targetItem = selected[selected.length - 1]
+      const __simplestFind = (list, id) => {
+        return list.find(item => item.id === id)
+      }
+      const __complexFind = (list, id) => {
+        const [ noChildren, hasChildren ] = [ [], [] ]
+        list.forEach(item => {
+          if (item.children) {
+            hasChildren.push(item)
+          } else {
+            noChildren.push(item)
+          }
+        })
+        let hasFound = __simplestFind(noChildren, id)
+        if (hasFound) {
+          return hasFound
+        } else {
+          hasFound = __simplestFind(hasChildren, id)
+          for (let i = 0; i < hasChildren.length; i++) {
+            hasFound = __complexFind(hasChildren[i].children, id)
+            if (hasFound) return hasFound
+          }
+          return undefined
+        }
+      }
       const handler = result => {
-        // todo
-        // wrong(因为经过克隆，已经是另外一个对象引用了):
+        // wrong:(因为经过克隆，已经是另外一个对象引用了):
         // this.$set(targetItem, 'children', result)
+        const copy = JSON.parse(JSON.stringify(this.source))
+        const itemToUpdate = __complexFind(copy, targetItem.id)
+        if (itemToUpdate) {
+          itemToUpdate.children = result
+          this.$emit('update:source', copy)
+        }
       }
       this.loadData(targetItem, handler)
     }

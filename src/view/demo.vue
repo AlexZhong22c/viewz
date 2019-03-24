@@ -4,6 +4,7 @@
     <div>{{selected && selected[1] && selected[1].name || '空' }}</div>
     <div>{{selected && selected[2] && selected[2].name || '空' }}</div>
     <z-cascader :source="source"
+      @update:source="onUpdateSource"
       popover-height="300px"
       :selected="selected"
       @update:selected="onUpdateSelected"
@@ -20,7 +21,7 @@ function ajax (pid = 0) {
     setTimeout(() => {
       const result = db.filter(item => item.pid === pid)
       resolve(result)
-    }, 2 * 1000)
+    }, 3 * 100)
   })
 }
 
@@ -43,6 +44,9 @@ export default {
       ajax(id).then(result => {
         handler(result)
       })
+    },
+    onUpdateSource (source) {
+      this.source = source
     },
     onUpdateSelected (selected) {
       this.selected = selected
