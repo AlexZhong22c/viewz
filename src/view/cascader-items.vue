@@ -95,9 +95,9 @@ export default {
 
   // 定高，可被用户传入的height通过设置style的方式覆盖掉：
   height: 100px;
-  overflow: auto;
   .z-cascader-items__items {
     height: 100%;
+    overflow: auto;
 
     // 补上第一个item label到顶部的距离不足：
     padding: 0.3em 0;
