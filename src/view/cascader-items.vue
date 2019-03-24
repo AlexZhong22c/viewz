@@ -5,9 +5,12 @@
       <div class="z-cascader-items__label"
         v-for="(item, index) in items"
         @click="onClickItem(item)"
-        :key="index">{{item.name}}<z-icon class="z-cascader-items__arrow"
-          v-if="!item.isLeaf"
-          name="right"></z-icon>
+        :key="index">
+          <span class="z-cascader-items__label-text">{{item.name}}</span>
+          <z-icon class="z-cascader-items__arrow"
+            v-if="!item.isLeaf"
+            name="right"
+          ></z-icon>
       </div>
     </div>
     <div class="z-cascader-items__children"
@@ -104,13 +107,26 @@ export default {
     border-left: 1px solid $z-border-gray--light;
   }
   .z-cascader-items__label {
-    padding: 0.3em 1em;
+    padding: 0.4em 1em;
 
     display: flex;
     align-items: center;
+
+    cursor: pointer;
+    &:hover {
+      background: $z-bg-white--active1;
+    }
+  }
+  .z-cascader-items__label-text {
+    // 有效的：
+    margin-right: 1em;
+
+    user-select: none;
   }
   .z-cascader-items__arrow {
-    margin-left: 1em;
+    // 外面有z-cascader-items__label包着，保持了每个item宽度一致：
+    // 只管向右对齐：
+    margin-left: auto;
     transform: scale(0.5);
   }
 }
