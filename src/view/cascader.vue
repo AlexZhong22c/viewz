@@ -1,12 +1,12 @@
 <template>
   <div class="z-cascader">
     <div class="z-cascader__trigger"
-      @click="popoverVisible = !popoverVisible">
-      <!-- 不因为突然有字在里面而高度变化 -->
+      @click="visible = !visible">
+      <!-- 加&nbsp;顶着，不因为突变为有字在里面而高度变化 -->
       {{ result || '&nbsp;' }}
     </div>
     <div class="z-cascader__popover-wrapper"
-      v-if="popoverVisible">
+      v-if="visible">
       <z-cascader-items :items="source"
         class="z-cascader__popover"
         :height="popoverHeight"
@@ -42,7 +42,7 @@ export default {
   },
   data () {
     return {
-      popoverVisible: false
+      visible: false
     }
   },
   computed: {
