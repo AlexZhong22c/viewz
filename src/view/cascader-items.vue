@@ -65,12 +65,17 @@ export default {
   },
   computed: {
     childrenItems () {
-      const curSelected = this.selected[this.level]
-      if (curSelected && curSelected.children) {
-        return curSelected.children
-      } else {
-        return null
+      let result
+      // 改为兼具响应selected和顶层数据两者的变化：
+      const { items, level, selected } = this
+      const temp = selected[level]
+      if (selected && temp) {
+        const item = items.find(item => item.name === temp.name)
+        if (item && item.children && item.children.length) {
+          result = item.children
+        }
       }
+      return result
     }
   },
   components: { 'z-icon': Icon }
