@@ -1,6 +1,7 @@
 <template>
   <div class="z-cascader"
-    ref="cascader">
+    ref="cascader"
+    v-click-outside="close">
     <div class="z-cascader__trigger"
       @click="onClickTrigger">
       <!-- 加&nbsp;顶着，不因为突变为有字在里面而高度变化 -->
@@ -20,12 +21,14 @@
 
 <script>
 import CascaderItems from './cascader-items'
+import ClickOutside from './click-outside'
 
 export default {
   name: 'zCascader',
   components: {
     'z-cascader-items': CascaderItems
   },
+  directives: { ClickOutside },
   props: {
     source: {
       type: Array
@@ -52,23 +55,11 @@ export default {
     }
   },
   methods: {
-    bindClickDocumentToClosePopover(e) {
-      const { cascader } = this.$refs
-      const { target } = e
-      if (cascader &&
-          (cascader === target || cascader.contains(target))
-      ) { return }
-      this.close()
-    },
     open () {
       this.visible = true
-      this.$nextTick(() => {
-        document.addEventListener('click', this.bindClickDocumentToClosePopover)
-      })
     },
     close () {
       this.visible = false
-      document.removeEventListener('click', this.bindClickDocumentToClosePopover)
     },
     onClickTrigger () {
       if (this.visible) {

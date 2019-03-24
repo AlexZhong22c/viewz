@@ -10,12 +10,20 @@
       @update:selected="onUpdateSelected"
       :loadData="loadData"
     ></z-cascader>
+    <z-cascader :source="source"
+      @update:source="onUpdateSource"
+      popover-height="300px"
+      :selected="selected"
+      @update:selected="onUpdateSelected"
+      :loadData="loadData"
+    ></z-cascader>
   </div>
 </template>
 
 <script>
 import Cascader from './cascader'
 import db from '../db'
+import { removeListener } from './click-outside'
 
 function ajax (pid = 0) {
   return new Promise((resolve, reject) => {
@@ -62,6 +70,9 @@ export default {
     onUpdateSelected (selected) {
       this.selected = selected
     }
+  },
+  destroyed () {
+    removeListener()
   },
   components: { 'z-cascader': Cascader }
 }
