@@ -11,6 +11,7 @@
         class="z-cascader__popover"
         :height="popoverHeight"
         :selected="selected"
+        :loadData="loadData"
         @update:selected="onUpdateSelected"></z-cascader-items>
     </div>
   </div>

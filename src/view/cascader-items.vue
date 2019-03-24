@@ -8,7 +8,7 @@
         :key="index">
           <span class="z-cascader-items__label-text">{{item.name}}</span>
           <z-icon class="z-cascader-items__arrow"
-            v-if="!item.isLeaf"
+            v-if="isRightArrowVisible(item)"
             name="right"
           ></z-icon>
       </div>
@@ -45,12 +45,18 @@ export default {
     level: {
       type: Number,
       default: 0
+    },
+    loadData: {
+      type: Function
     }
   },
   data () {
     return {}
   },
   methods: {
+    isRightArrowVisible (item) {
+      return this.loadData ? !item.isLeaf : item.children
+    },
     onClickItem (item) {
       const { selected, level } = this
       const result = JSON.parse(JSON.stringify(selected))
