@@ -92,17 +92,18 @@ export default {
      */
     bindClickDocumentToClosePopover (e) {
       const { popover, contentWrapper } = this.$refs
+      const { target } = e
       // 因为冒泡，它们都触发了document的click：
       // 由trigger引发: true false 不执行close，但由另一处代码决定是否close(这就是内聚close函数的好处)
       // 由弹窗dom引发: false true 不执行close
       // 由document引发: false false 执行close
       // 由其他的trigger(dom的引用内存地址不同)引发： false false 执行close
       if (popover &&
-          (popover === e.target || popover.contains(e.target))
+          (popover === target || popover.contains(target))
       ) { return }
       // contentWrapper的DOM不在popover的DOM中，所以要另外判断：
       if (contentWrapper &&
-          (contentWrapper === e.target || contentWrapper.contains(e.target))
+          (contentWrapper === target || contentWrapper.contains(target))
       ) { return }
       this.close()
     },
