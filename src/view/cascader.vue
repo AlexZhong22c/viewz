@@ -107,8 +107,8 @@ export default {
         }
       }
       // 最好就是用户的后端来告知isLeaf：
-      if (!targetItem.isLeaf) {
-        this.loadData && this.loadData(targetItem, handler)
+      if (!targetItem.isLeaf && this.loadData) {
+        this.loadData(targetItem, handler)
       }
     }
   },
