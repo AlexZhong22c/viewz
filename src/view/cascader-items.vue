@@ -94,7 +94,6 @@ export default {
 
 <style lang="scss">
 @import 'var';
-// FIXME: 样式随便写的，不科学的写法：
 .z-cascader-items {
   display: flex;
   align-items: flex-start;

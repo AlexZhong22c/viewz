@@ -118,7 +118,6 @@ export default {
 
 <style lang="scss">
 @import 'var';
-// FIXME: 样式随便写的，不科学的写法：
 .z-cascader {
   display: inline-block;
   position: relative;
@@ -128,6 +127,7 @@ export default {
     padding: 0 1em;
     border: 1px solid $z-border-gray1;
     border-radius: $z-border-radius;
+    background: $z-bg-white1;
 
     display: inline-flex;
     align-items: center;
@@ -136,6 +136,9 @@ export default {
     position: absolute;
     top: 100%;
     left: 0;
+
+    // 弹出内容不想被后面的元素挡住：
+    z-index: 1;
 
     margin-top: 8px;
 

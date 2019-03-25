@@ -10,6 +10,7 @@
       @update:selected="onUpdateSelected"
       :loadData="loadData"
     ></z-cascader>
+    <div>
     <z-cascader :source="source"
       @update:source="onUpdateSource"
       popover-height="300px"
@@ -17,6 +18,7 @@
       @update:selected="onUpdateSelected"
       :loadData="loadData"
     ></z-cascader>
+    </div>
   </div>
 </template>
 
