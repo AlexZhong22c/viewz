@@ -11,13 +11,14 @@
       :loadData="loadData"
     ></z-cascader>
     <div>
-    <z-cascader :source="source"
-      @update:source="onUpdateSource"
-      popover-height="300px"
-      :selected="selected"
-      @update:selected="onUpdateSelected"
-      :loadData="loadData"
-    ></z-cascader>
+      {{selected.map(item=> item.name)}}
+      <!-- <z-cascader :source="source"
+        @update:source="onUpdateSource"
+        popover-height="300px"
+        :selected="selected"
+        @update:selected="onUpdateSelected"
+        :loadData="loadData"
+      ></z-cascader> -->
     </div>
   </div>
 </template>
@@ -42,7 +43,7 @@ function ajax (pid = 0) {
       })
 
       resolve(result)
-    }, 3 * 100)
+    }, 2 * 1000)
   })
 }
 

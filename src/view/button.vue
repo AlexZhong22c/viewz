@@ -80,7 +80,7 @@ export default {
     }
 
     .loading {
-      animation: z-icon-spin 2s infinite linear;
+      animation: z-spin 2s infinite linear;
     }
   }
 </style>
