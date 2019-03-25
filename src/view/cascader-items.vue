@@ -7,10 +7,17 @@
         @click="onClickItem(item)"
         :key="index">
           <span class="z-cascader-items__label-text">{{item.name}}</span>
-          <z-icon class="z-cascader-items__arrow"
-            v-if="isRightArrowVisible(item)"
+          <span class="z-cascader-items__icon-wrapper">
+            <z-icon
+              v-if="item.name === loadingItem.name"
+              class="z-cascader-items__icon-loading"
+              name="loading"
+            ></z-icon>
+          <z-icon class="z-cascader-items__icon-arrow"
+            v-if="isRightArrowVisible(item) && item.name !== loadingItem.name"
             name="right"
           ></z-icon>
+          </span>
       </div>
     </div>
     <div class="z-cascader-items__children"
@@ -19,7 +26,8 @@
         :height="height"
         :level="level + 1"
         :selected="selected"
-        :loadData="loadData"
+        :load-data="loadData"
+        :loading-item="loadingItem"
         @update:selected="onChildUpdateSelected"></z-cascader-items>
     </div>
   </div>
@@ -49,6 +57,10 @@ export default {
     },
     loadData: {
       type: Function
+    },
+    loadingItem: {
+      type: Object,
+      default: () => ({})
     }
   },
   data () {
@@ -132,11 +144,20 @@ export default {
 
     user-select: none;
   }
-  .z-cascader-items__arrow {
+  .z-cascader-items__icon-wrapper {
     // 外面有z-cascader-items__label包着，保持了每个item宽度一致：
     // 只管向右对齐：
     margin-left: auto;
+
+    // 里面内容垂直居中：
+    display: inline-flex;
+    align-items: center;
+  }
+  .z-cascader-items__icon-arrow, .z-cascader-items__icon-loading {
     transform: scale(0.5);
+  }
+  .z-cascader-items__icon-loading {
+    animation: z-spin 2s infinite linear;
   }
 }
 </style>

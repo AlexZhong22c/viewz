@@ -13,7 +13,8 @@
         class="z-cascader__popover"
         :height="popoverHeight"
         :selected="selected"
-        :loadData="loadData"
+        :load-data="loadData"
+        :loading-item="loadingItem"
         @update:selected="onUpdateSelected"></z-cascader-items>
     </div>
   </div>
@@ -46,7 +47,8 @@ export default {
   },
   data () {
     return {
-      visible: false
+      visible: false,
+      loadingItem: {}
     }
   },
   computed: {
@@ -99,6 +101,8 @@ export default {
       const handler = result => {
         // wrong:(因为经过克隆，已经是另外一个对象引用了):
         // this.$set(targetItem, 'children', result)
+
+        this.loadingItem = {}
         const copy = JSON.parse(JSON.stringify(this.source))
         const itemToUpdate = __complexFind(copy, targetItem.id)
         if (itemToUpdate) {
@@ -109,6 +113,7 @@ export default {
       // 最好就是用户的后端来告知isLeaf：
       if (!targetItem.isLeaf && this.loadData) {
         this.loadData(targetItem, handler)
+        this.loadingItem = targetItem
       }
     }
   },
