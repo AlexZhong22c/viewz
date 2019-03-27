@@ -7,7 +7,9 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "test:unit": "vue-cli-service test:unit",
+    "test": "karma start --single-run",
+    "test:unit": "karma start",
+    "test:unit:old": "vue-cli-service test:unit",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"

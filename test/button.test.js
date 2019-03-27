@@ -1,5 +1,6 @@
 /**
  * parce报错，试试加上-—no-cache和—no-minify运行
+ * @file 已重写为spec.js
  * @file 整合上一次使用chai的要点：
  * 1. document.body.appendChild(iDiv)
  * 2. vm.$el.remove();vm.$destroy()

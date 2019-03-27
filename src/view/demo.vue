@@ -43,7 +43,7 @@ function ajax (pid = 0) {
       })
 
       resolve(result)
-    }, 2 * 1000)
+    }, 1 * 1000)
   })
 }
 
