@@ -43,6 +43,7 @@ export default {
     if (this.trigger === 'click') {
       this.$refs.triggerWrapper.addEventListener('click', this.onClickTrigger)
     } else {
+      // TODO:给哪个dom绑定mouseenter可以斟酌一下：
       this.$refs.popover.addEventListener('mouseenter', this.open)
       this.$refs.popover.addEventListener('mouseleave', this.close)
     }
