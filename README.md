@@ -23,6 +23,12 @@
 npm i --save viewz
 ```
 
+或
+
+```bash
+yarn add --save viewz
+```
+
 3. 引入 viewz
 
 ```js
