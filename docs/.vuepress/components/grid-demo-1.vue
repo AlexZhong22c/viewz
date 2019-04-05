@@ -1,18 +1,65 @@
 <template>
   <div style="padding-top: 16px;">
-    <h2>双向绑定</h2>
+    <h2>24格网格</h2>
     <p>
       <strong>预览</strong>
     </p>
-    <z-row>
-      <z-col span="8"
-        class="z-demo-col"></z-col>
-      <z-col span="8"
-        class="z-demo-col"></z-col>
-      <z-col span="8"
-        class="z-demo-col"></z-col>
+    <z-row class="z-demo-row">
+      <z-col span="8">
+        <div class="z-demo-col">8</div>
+      </z-col>
+      <z-col span="8">
+        <div class="z-demo-col">8</div>
+      </z-col>
+      <z-col span="8">
+        <div class="z-demo-col">8</div>
+      </z-col>
     </z-row>
 
+    <z-row class="z-demo-row">
+      <z-col span="6">
+        <div class="z-demo-col">6</div>
+      </z-col>
+      <z-col span="6">
+        <div class="z-demo-col">6</div>
+      </z-col>
+      <z-col span="6">
+        <div class="z-demo-col">6</div>
+      </z-col>
+      <z-col span="6">
+        <div class="z-demo-col">6</div>
+      </z-col>
+    </z-row>
+
+    <z-row class="z-demo-row">
+      <z-col span="4">
+        <div class="z-demo-col">4</div>
+      </z-col>
+      <z-col span="4">
+        <div class="z-demo-col">4</div>
+      </z-col>
+      <z-col span="4">
+        <div class="z-demo-col">4</div>
+      </z-col>
+      <z-col span="4" v-for="n in (24 / 4 - 3)" :key="n">
+        <div class="z-demo-col">4</div>
+      </z-col>
+    </z-row>
+
+    <z-row class="z-demo-row">
+      <z-col span="2">
+        <div class="z-demo-col">2</div>
+      </z-col>
+      <z-col span="2">
+        <div class="z-demo-col">2</div>
+      </z-col>
+      <z-col span="2">
+        <div class="z-demo-col">2</div>
+      </z-col>
+      <z-col span="2" v-for="n in (24 / 2 - 3)" :key="n">
+        <div class="z-demo-col">2</div>
+      </z-col>
+    </z-row>
     <p>
       <strong>代码</strong>
     </p>
@@ -24,10 +71,16 @@
 * {
   box-sizing: border-box;
 }
+.z-demo-row {
+  margin: 10px 0;
+}
 .z-demo-col {
   height: 50px;
   border: 1px solid #ccc;
   background: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
 
@@ -39,28 +92,78 @@ export default {
   components: { zRow, zCol },
   data() {
     return {
-      value: '1',
       content: `
-          data: {
-            return {
-              value: '1'
-            }
-          }
+        <z-row class="z-demo-row">
+          <z-col span="8">
+            <div class="z-demo-col">8</div>
+          </z-col>
+          <z-col span="8">
+            <div class="z-demo-col">8</div>
+          </z-col>
+          <z-col span="8">
+            <div class="z-demo-col">8</div>
+          </z-col>
+        </z-row>
 
-          <z-row>
-            <z-col span="8"
-              class="z-demo-col"></z-col>
-            <z-col span="8"
-              class="z-demo-col"></z-col>
-            <z-col span="8"
-              class="z-demo-col"></z-col>
-          </z-row>
+        <z-row class="z-demo-row">
+          <z-col span="6">
+            <div class="z-demo-col">6</div>
+          </z-col>
+          <z-col span="6">
+            <div class="z-demo-col">6</div>
+          </z-col>
+          <z-col span="6">
+            <div class="z-demo-col">6</div>
+          </z-col>
+          <z-col span="6">
+            <div class="z-demo-col">6</div>
+          </z-col>
+        </z-row>
 
-          .z-demo-col {
-            height: 50px;
-            border: 1px solid #ccc;
-            background: #eee;
-          }
+        <z-row class="z-demo-row">
+          <z-col span="4">
+            <div class="z-demo-col">4</div>
+          </z-col>
+          <z-col span="4">
+            <div class="z-demo-col">4</div>
+          </z-col>
+          <z-col span="4">
+            <div class="z-demo-col">4</div>
+          </z-col>
+          <z-col span="4" v-for="n in (24 / 4 - 3)" :key="n">
+            <div class="z-demo-col">4</div>
+          </z-col>
+        </z-row>
+
+        <z-row class="z-demo-row">
+          <z-col span="2">
+            <div class="z-demo-col">2</div>
+          </z-col>
+          <z-col span="2">
+            <div class="z-demo-col">2</div>
+          </z-col>
+          <z-col span="2">
+            <div class="z-demo-col">2</div>
+          </z-col>
+          <z-col span="2" v-for="n in (24 / 2 - 3)" :key="n">
+            <div class="z-demo-col">2</div>
+          </z-col>
+        </z-row>
+
+        * {
+          box-sizing: border-box;
+        }
+        .z-demo-row {
+          margin: 10px 0;
+        }
+        .z-demo-col {
+          height: 50px;
+          border: 1px solid #ccc;
+          background: #eee;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
       `
         .replace(/ {8}/g, '')
         .trim()
