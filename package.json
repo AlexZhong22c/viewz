@@ -55,7 +55,9 @@
     "sass-loader": "^7.1.0",
     "sinon": "^7.3.0",
     "sinon-chai": "^3.3.0",
-    "vuepress": "^0.14.9"
+    "vuepress": "^0.14.9",
+    "webpack-dev-middleware": "3.6.2",
+    "webpack-dev-server": "^3.2.1"
   },
   "config": {
     "commitizen": {
