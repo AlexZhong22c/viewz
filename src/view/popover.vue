@@ -49,6 +49,7 @@ export default {
     }
   },
   beforeDestroy () {
+    this.putBackContent();
     // 写在html模板的属性的事件绑定，vue会帮你解绑；而这些不会：
     if (this.trigger === 'click') {
       this.$refs.triggerWrapper.removeEventListener('click', this.onClickTrigger)
@@ -125,6 +126,11 @@ export default {
       } else {
         this.open()
       }
+    },
+    putBackContent() {
+      const { contentWrapper, popover } = this.$refs
+      if (!contentWrapper) { return }
+      popover.appendChild(contentWrapper)
     }
   }
 }
