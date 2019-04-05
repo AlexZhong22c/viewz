@@ -1,5 +1,5 @@
 <template>
-  <div class="z-tabs-head">
+  <div class="z-tabs-head" ref="head">
     <slot></slot>
     <div class="z-tabs-head__bottom-line"
       ref="bottomLine"></div>
@@ -16,10 +16,12 @@ export default {
   mounted() {
     this.eventBus.$on('update:selected', (item, vm) => {
       const { width, left } = vm.$el.getBoundingClientRect()
+      const { left: headLeft } = this.$refs.head.getBoundingClientRect()
+
       this.$refs.bottomLine.style.width = `${width}px`
       // better:硬件加速：(因为会导致bottomLine一开始从左边滑进来，所以先暂时放弃)
       // this.$refs.bottomLine.style.transform = `translateX(${left}px)`
-      this.$refs.bottomLine.style.left = `${left}px`
+      this.$refs.bottomLine.style.left = `${left - headLeft}px`
     })
   }
 }
