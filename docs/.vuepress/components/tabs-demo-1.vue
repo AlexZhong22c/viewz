@@ -50,7 +50,7 @@
               <z-tabs-pane name="HTML">the content of HTML topic</z-tabs-pane>
             </z-tabs-body>
           </z-tabs>
-      `.replace(/ {8}/g, '').trim()
+      `.replace(/^ {8}/gm, '').trim()
       }
     }
   }

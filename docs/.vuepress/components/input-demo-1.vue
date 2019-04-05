@@ -4,7 +4,6 @@
     <p>
       <strong>预览</strong>
     </p>
-    <z-input></z-input>
     <z-input value="中文"></z-input>
     <z-input value="中文"
       disabled></z-input>
@@ -24,23 +23,14 @@ export default {
   components: { ZInput },
   data() {
     return {
-      selected: '1',
       content: `
-        data() {
-          return {
-            selected: '1',
-          }
-        }
-
         <z-input></z-input>
         <z-input value="中文"></z-input>
         <z-input value="中文"
           disabled></z-input>
         <z-input value="中文"
           readonly></z-input>
-      `
-        .replace(/ {8}/g, '')
-        .trim()
+      `.replace(/^ {8}/gm, '').trim()
     }
   }
 }

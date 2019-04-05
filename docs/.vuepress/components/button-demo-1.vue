@@ -16,12 +16,12 @@
   </div>
 </template>
 <script>
-  import Button from '../../../src/view/button'
+  import ZButton from '../../../src/view/button'
 
   export default {
     name: 'buttonDemos',
     components: {
-      'z-button': Button
+      ZButton
     },
     data () {
       return {
@@ -31,7 +31,7 @@
           <z-button icon="settings">默认按钮</z-button>
           <z-button :loading="true">默认按钮</z-button>
           <z-button disabled>默认按钮</z-button>
-      `.replace(/ {8}/g, '').trim()
+      `.replace(/^ {8}/gm, '').trim()
       }
     }
   }

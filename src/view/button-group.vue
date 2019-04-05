@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'zButtonGroup',
+  name: 'ZButtonGroup',
   mounted () {
     for (const node of this.$el.children) {
       const name = node.nodeName.toLowerCase()

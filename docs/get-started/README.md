@@ -4,26 +4,18 @@
 
 ## 安装 viewz
 
-```bash
-npm i --save viewz
-```
-
-或
-
-```bash
-yarn add --save viewz
-```
+请参考 [安装](../install/) 章节
 
 ## Hello World
 
 ```javascript
-import { zButton } from 'viewz'
+import { ZButton } from 'viewz'
 import Vue from 'vue'
 
 new Vue({
   el: '#app',
   components: {
-    zButton
+    ZButton
   }
 })
 ```

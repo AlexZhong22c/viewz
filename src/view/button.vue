@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: 'zButton',
+  name: 'ZButton',
   props: {
     icon: {},
     loading: {

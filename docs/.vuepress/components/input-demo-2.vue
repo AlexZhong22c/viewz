@@ -30,9 +30,7 @@ export default {
 
           <z-input v-model="value"></z-input>
           <div>value: {{value}}</div>
-      `
-        .replace(/ {8}/g, '')
-        .trim()
+      `.replace(/^ {8}/gm, '').trim()
     }
   }
 }

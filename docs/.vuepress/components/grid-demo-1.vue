@@ -164,9 +164,7 @@ export default {
           justify-content: center;
           align-items: center;
         }
-      `
-        .replace(/ {8}/g, '')
-        .trim()
+      `.replace(/^ {8}/gm, '').trim()
     }
   }
 }
