@@ -47,7 +47,7 @@ export default {
       this.$refs.popover.addEventListener('mouseleave', this.close)
     }
   },
-  destroyed() {
+  beforeDestroy () {
     // 写在html模板的属性的事件绑定，vue会帮你解绑；而这些不会：
     if (this.trigger === 'click') {
       this.$refs.triggerWrapper.removeEventListener('click', this.onClickTrigger)
