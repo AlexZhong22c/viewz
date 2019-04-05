@@ -20,13 +20,13 @@
 2. 安装 viewz
 
 ```bash
-npm i --save viewz
+npm install viewz
 ```
 
 或
 
 ```bash
-yarn add --save viewz
+yarn add viewz
 ```
 
 3. 引入 viewz
@@ -41,6 +41,8 @@ yarn add --save viewz
 ```
 
 ## 文档
+
+[官方文档](https://alexzhong22c.github.io/viewz/)
 
 ## 提问
 
