@@ -39,7 +39,7 @@
  */
 import Icon from './icon'
 export default {
-  name: 'zCascaderItems',
+  name: 'ZCascaderItems',
   props: {
     items: {
       type: Array

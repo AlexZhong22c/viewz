@@ -17,7 +17,7 @@
 // 能否优化 DefaultCloseButtonText??:
 const DefaultCloseButtonText = '关闭'
 export default {
-  name: 'zToast',
+  name: 'ZToast',
   data () {
     return {
       DefaultCloseButtonText

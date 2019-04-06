@@ -12,7 +12,7 @@ const expect = chai.expect;
 import Vue from 'vue'
 // 要测试的文件：
 import Button from '../src/view/button'
-// !!测试button的时候，和原流程一样还是要引用zIcon的：
+// !!测试button的时候，和原流程一样还是要引用ZIcon的：
 import Icon from '../src/view/icon'
 Vue.component('z-icon', Icon)
 

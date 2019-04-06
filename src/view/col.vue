@@ -14,7 +14,7 @@ const validator = value => {
   return true
 }
 export default {
-  name: 'zCol',
+  name: 'ZCol',
   props: {
     span: {
       type: [ Number, String ]

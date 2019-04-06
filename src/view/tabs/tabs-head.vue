@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: 'zTabsHead',
+  name: 'ZTabsHead',
   inject: ['eventBus'],
   mounted () {
     this.eventBus.$on('update:selected', (item, vm) => {

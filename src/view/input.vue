@@ -19,7 +19,7 @@
 import Icon from './icon'
 export default {
   components: { 'z-icon': Icon },
-  name: 'zInput',
+  name: 'ZInput',
   props: {
     value: {
       type: String

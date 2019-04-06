@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'zLayout',
+  name: 'ZLayout',
   data () {
     return {
       layoutClass: {
@@ -16,7 +16,7 @@ export default {
   },
   mounted () {
     this.$children.forEach(vm => {
-      if (vm.$options.name === 'zSider') {
+      if (vm.$options.name === 'ZSider') {
         this.layoutClass.hasSider = true
       }
     })

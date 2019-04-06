@@ -25,7 +25,7 @@ import CascaderItems from './cascader-items'
 import ClickOutside from './click-outside'
 
 export default {
-  name: 'zCascader',
+  name: 'ZCascader',
   components: {
     'z-cascader-items': CascaderItems
   },

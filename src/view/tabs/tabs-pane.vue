@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: 'zTabsPane',
+  name: 'ZTabsPane',
   inject: ['eventBus'],
   data () {
     return {

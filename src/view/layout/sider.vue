@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: 'zSider',
+  name: 'ZSider',
   data () {
     return {
       visible: true

@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'zTabsBody',
+  name: 'ZTabsBody',
   inject: ['eventBus']
 }
 </script>

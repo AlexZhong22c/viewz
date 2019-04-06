@@ -7,7 +7,7 @@
 <script>
 import Vue from 'vue'
 export default {
-  name: 'zCollapse',
+  name: 'ZCollapse',
   props: {
     single: {
       type: Boolean,

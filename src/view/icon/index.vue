@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'zIcon',
+  name: 'ZIcon',
   props: ['name'],
   mounted () {
     // import('./svg').then(Svg => {})

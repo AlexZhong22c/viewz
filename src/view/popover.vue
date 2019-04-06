@@ -18,7 +18,7 @@
 <script>
 // TODO:检测这个popover的高度，如果超过到窗口上边的距离(也就是容不下显示完全)，应该自动转到下面弹出来。
 export default {
-  name: 'zPopover',
+  name: 'ZPopover',
   props: {
     position: {
       type: String,
@@ -49,7 +49,7 @@ export default {
     }
   },
   beforeDestroy () {
-    this.putBackContent();
+    this.putBackContent()
     // 写在html模板的属性的事件绑定，vue会帮你解绑；而这些不会：
     if (this.trigger === 'click') {
       this.$refs.triggerWrapper.removeEventListener('click', this.onClickTrigger)
@@ -127,7 +127,7 @@ export default {
         this.open()
       }
     },
-    putBackContent() {
+    putBackContent () {
       const { contentWrapper, popover } = this.$refs
       if (!contentWrapper) { return }
       popover.appendChild(contentWrapper)

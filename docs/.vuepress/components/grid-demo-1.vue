@@ -85,11 +85,11 @@
 </style>
 
 <script>
-import zRow from '../../../src/view/row'
-import zCol from '../../../src/view/col'
+import ZRow from '../../../src/view/row'
+import ZCol from '../../../src/view/col'
 
 export default {
-  components: { zRow, zCol },
+  components: { ZRow, ZCol },
   data() {
     return {
       content: `

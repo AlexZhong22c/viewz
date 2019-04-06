@@ -8,7 +8,7 @@
 import Vue from 'vue'
 
 export default {
-  name: 'zTabs',
+  name: 'ZTabs',
   props: {
     selected: {
       type: String,
@@ -42,11 +42,11 @@ export default {
     },
     updateEventBusSelected () {
       this.$children.forEach(vm => {
-        if (vm.$options.name === 'zTabsHead') {
+        if (vm.$options.name === 'ZTabsHead') {
           vm.$children.forEach(childVm => {
             if (
               childVm.name === this.selected &&
-              childVm.$options.name === 'zTabsItem'
+              childVm.$options.name === 'ZTabsItem'
             ) {
               this.eventBus.$emit('update:selected', this.selected, childVm)
             }

@@ -14,7 +14,7 @@ import Button from '@/view/button'
 import Icon from '@/view/icon'
 // 这个import Vue可以优化：
 import Vue from 'vue'
-// !!测试button的时候，和原流程一样还是要引用zIcon的：
+// !!测试button的时候，和原流程一样还是要引用ZIcon的：
 Vue.component('z-icon', Icon)
 
 describe('Button', () => {

@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: 'zTabsItem',
+  name: 'ZTabsItem',
   // 祖先元素不一定provide，所以eventBus要做非空判断：
   inject: ['eventBus'],
   data () {
