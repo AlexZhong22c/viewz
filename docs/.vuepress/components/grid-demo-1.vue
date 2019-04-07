@@ -85,8 +85,8 @@
 </style>
 
 <script>
-import ZRow from '../../../src/view/row'
-import ZCol from '../../../src/view/col'
+import ZRow from '../../../src/view/grid/row'
+import ZCol from '../../../src/view/grid/col'
 
 export default {
   components: { ZRow, ZCol },

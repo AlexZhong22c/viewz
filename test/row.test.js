@@ -5,8 +5,8 @@
  */
 const expect = chai.expect;
 import Vue from 'vue'
-import Row from '../src/view/row'
-import Col from '../src/view/col'
+import Row from '../src/view/grid/row'
+import Col from '../src/view/grid/col'
 
 Vue.config.productionTip = false
 Vue.config.devtools = false
