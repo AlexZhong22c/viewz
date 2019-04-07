@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import Col from '@/view/col'
+import Col from '../../src/view/grid/col'
 import { mount } from '@vue/test-utils';
 
 describe('Col', () => {
