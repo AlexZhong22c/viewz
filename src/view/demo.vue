@@ -25,7 +25,7 @@
 
 <script>
 import Cascader from './cascader'
-import db from '../db'
+import db from '../../test/fixture/db'
 import { removeListener } from './click-outside'
 
 function ajax (pid = 0) {
