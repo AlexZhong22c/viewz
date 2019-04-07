@@ -33,10 +33,20 @@ export default {
 </script>
 
 <style lang="scss">
+@import "var";
 .z-nav-item {
   padding: 10px 20px;
+  position: relative;
   &.selected {
-    background: red;
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+
+      border-bottom: 2px solid $z-border-blue1;
+      width: 100%;
+    }
   }
 }
 </style>

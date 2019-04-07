@@ -71,8 +71,10 @@ export default {
 </script>
 
 <style lang="scss">
+@import "var";
 .z-nav {
   display: flex;
-  border: 1px solid red;
+  border-bottom: 1px solid $z-border-gray1;
+  color: $z-color-gray1;
 }
 </style>
