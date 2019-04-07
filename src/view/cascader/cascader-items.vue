@@ -37,7 +37,7 @@
 /**
  * 这个组件不能单独作为自定义组件的根组件：
  */
-import Icon from './icon'
+import Icon from '../icon/index'
 export default {
   name: 'ZCascaderItems',
   props: {
@@ -105,7 +105,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import 'var';
+@import '../var';
 .z-cascader-items {
   display: flex;
   align-items: flex-start;

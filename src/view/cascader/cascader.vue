@@ -22,7 +22,7 @@
 
 <script>
 import CascaderItems from './cascader-items'
-import ClickOutside from './click-outside'
+import ClickOutside from '../click-outside'
 
 export default {
   name: 'ZCascader',
@@ -122,7 +122,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import 'var';
+@import '../var';
 .z-cascader {
   display: inline-block;
   position: relative;

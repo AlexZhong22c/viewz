@@ -2,7 +2,7 @@ import Vue from 'vue'
 
 import Button from './view/button/button'
 import ButtonGroup from './view/button/button-group'
-import Cascader from './view/cascader'
+import Cascader from './view/cascader/cascader'
 import Col from './view/col'
 import Collapse from './view/collapse'
 import CollapseItem from './view/collapse-item'

@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import Cascader from './cascader'
+import Cascader from './cascader/cascader'
 import db from '../../test/fixture/db'
 import { removeListener } from './click-outside'
 
