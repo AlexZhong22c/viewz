@@ -1,7 +1,7 @@
 const expect = chai.expect;
 import Vue from 'vue'
-import Collapse from '../src/view/collapse'
-import CollapseItem from '../src/view/collapse-item'
+import Collapse from '../src/view/collapse/collapse'
+import CollapseItem from '../src/view/collapse/collapse-item'
 
 Vue.config.productionTip = false
 Vue.config.devtools = false
