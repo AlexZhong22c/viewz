@@ -16,7 +16,7 @@
   </div>
 </template>
 <script>
-  import ZButton from '../../../src/view/button'
+  import ZButton from '../../../src/view/button/button'
 
   export default {
     name: 'buttonDemos',

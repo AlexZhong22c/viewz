@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import ZButton from '../../../src/view/button'
+import ZButton from '../../../src/view/button/button'
 import ZPopover from '../../../src/view/popover'
 
 export default {

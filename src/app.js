@@ -1,7 +1,7 @@
 import Vue from 'vue'
 
-import Button from './view/button'
-import ButtonGroup from './view/button-group'
+import Button from './view/button/button'
+import ButtonGroup from './view/button/button-group'
 import Cascader from './view/cascader'
 import Col from './view/col'
 import Collapse from './view/collapse'

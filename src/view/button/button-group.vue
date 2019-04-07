@@ -19,7 +19,7 @@ export default {
 </script>
 
 <style lang="scss">
-  @import "var";
+  @import "../var";
   .z-button-group {
     display: inline-flex;
     vertical-align: middle;

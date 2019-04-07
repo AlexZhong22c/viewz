@@ -29,7 +29,7 @@
 </style>
 <script>
 import plugin from '../../../src/view/plugin'
-import ZButton from '../../../src/view/button'
+import ZButton from '../../../src/view/button/button'
 import Vue from 'vue'
 
 Vue.use(plugin)
