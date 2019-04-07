@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = {
   title: 'VIEWZ UI',
   base: '/viewz/',
@@ -30,5 +32,8 @@ module.exports = {
         ]
       },
     ]
+  },
+  scss: {
+    includePaths: [path.join(__dirname, '../../style')]
   }
 }

@@ -31,7 +31,7 @@ export default {
 </script>
 
 <style lang="scss">
-  @import "../var";
+  @import "var";
   .z-button {
     font-size: $z-font-size;
     height: $z-button-height;

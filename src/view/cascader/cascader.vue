@@ -122,7 +122,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../var';
+@import "var";
 .z-cascader {
   display: inline-block;
   position: relative;

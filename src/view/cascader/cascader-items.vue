@@ -105,7 +105,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../var';
+@import "var";
 .z-cascader-items {
   display: flex;
   align-items: flex-start;
