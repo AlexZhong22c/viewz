@@ -40,6 +40,13 @@ export default {
       margin-top: 4px;
       // 宽度不塌掉：
       white-space: nowrap;
+
+      box-shadow: 0 0 3px fade_out(black, 0.8);
+      border-radius: $z-border-radius;
+      font-size: $z-font-size;
+      color: $z-color-gray2;
+
+      min-width: 8em;
     }
     // 第二级及更下级的sub-nav__popover按照常理应该改为出现在右边:
     .z-sub-nav .z-sub-nav__popover {

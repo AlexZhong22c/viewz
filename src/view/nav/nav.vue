@@ -76,5 +76,7 @@ export default {
   display: flex;
   border-bottom: 1px solid $z-border-gray1;
   color: $z-color-gray1;
+  // 去掉常见的文本选择光标：
+  cursor: default;
 }
 </style>
