@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper" :class="{error}">
+  <div class="z-input__wrapper" :class="{error}">
     <!-- readonly 和 disabled 还是有区别的，readonly还能获得焦点的： -->
     <!-- 原生change事件直传给上一层： -->
     <input :value="value" type="text" :disabled="disabled" :readonly="readonly"
@@ -42,7 +42,7 @@ export default {
 <style lang="scss">
   @import "var";
   $red: #F1453D;
-  .wrapper {
+  .z-input__wrapper {
     font-size: $z-font-size--small;
     display: inline-flex;
     align-items: center;
