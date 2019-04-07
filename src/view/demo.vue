@@ -1,83 +1,28 @@
 <template>
   <div>
-    <div>{{selected && selected[0] && selected[0].name || '空' }}</div>
-    <div>{{selected && selected[1] && selected[1].name || '空' }}</div>
-    <div>{{selected && selected[2] && selected[2].name || '空' }}</div>
-    <z-cascader :source="source"
-      @update:source="onUpdateSource"
-      popover-height="300px"
-      :selected="selected"
-      @update:selected="onUpdateSelected"
-      :loadData="loadData"
-    ></z-cascader>
-    <div>
-      {{selected.map(item=> item.name)}}
-      <!-- <z-cascader :source="source"
-        @update:source="onUpdateSource"
-        popover-height="300px"
-        :selected="selected"
-        @update:selected="onUpdateSelected"
-        :loadData="loadData"
-      ></z-cascader> -->
-    </div>
+    <z-nav :selected.sync="selected">
+      <z-nav-item name="home">首页</z-nav-item>
+      <z-nav-item name="about">关于</z-nav-item>
+      <z-nav-item name="hire">招聘</z-nav-item>
+    </z-nav>
   </div>
 </template>
 
 <script>
-import Cascader from './cascader/cascader'
-import db from '../../test/fixture/db'
-import { removeListener } from './click-outside'
-
-function ajax (pid = 0) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      const result = db.filter(item => item.pid === pid)
-
-      result.forEach(rItem => {
-        // 这部分是模拟，实际上只有后端才知道是否isLeaf：
-        if (db.find(item => item.pid === rItem.id)) {
-          rItem.isLeaf = false
-        } else {
-          rItem.isLeaf = true
-        }
-      })
-
-      resolve(result)
-    }, 1 * 1000)
-  })
-}
+import ZNav from './nav/nav'
+import ZNavItem from './nav/nav-item'
+// import ZSubNav from './nav/sub-nav'
 
 export default {
   name: 'demo',
+  components: { ZNav, ZNavItem },
   data () {
     return {
-      selected: [],
-      source: []
+      selected: ['home']
     }
   },
-  created () {
-    ajax(0).then(result => {
-      this.source = result
-    })
-  },
-  methods: {
-    loadData (targetItem, handler) {
-      const { id } = targetItem
-      ajax(id).then(result => {
-        handler(result)
-      })
-    },
-    onUpdateSource (source) {
-      this.source = source
-    },
-    onUpdateSelected (selected) {
-      this.selected = selected
-    }
-  },
-  destroyed () {
-    removeListener()
-  },
-  components: { 'z-cascader': Cascader }
+  created () {},
+  methods: {}
 }
 </script>
 
