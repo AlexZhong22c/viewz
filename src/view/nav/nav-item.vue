@@ -26,6 +26,9 @@ export default {
   },
   methods: {
     onClick () {
+      // 套路是一开始把数组清空，一路组件方法的递归调用，把parent的name unshift进来数组。这样的算法效率是最快的，不用从上往下遍历谁是它的祖先，不用pid。
+      this.root.namePath = []
+      this.$parent.updateNamePath && this.$parent.updateNamePath()
       this.$emit('add:selected', this.name)
     }
   }

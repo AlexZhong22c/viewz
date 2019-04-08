@@ -46,6 +46,11 @@ export default {
     onClose () {
       this.showPopover = false
     },
+    updateNamePath () {
+      this.root.namePath.unshift(this.name)
+      if (this.$parent.updateNamePath) {
+        this.$parent.updateNamePath()
+      }
     }
   }
 }
