@@ -48,11 +48,13 @@ export default {
 
       min-width: 8em;
     }
-    // 第二级及更下级的sub-nav__popover按照常理应该改为出现在右边:
-    .z-sub-nav .z-sub-nav__popover {
-      top: 0;
-      left: 100%;
-      margin-left: 8px;
+    .z-sub-nav {
+      // 第二级及更下级的sub-nav__popover按照常理应该改为出现在右边:
+      .z-sub-nav__popover {
+        top: 0;
+        left: 100%;
+        margin-left: 8px;
+      }
     }
     // 又和一级的z-nav-item样式不同：
     .z-nav-item {

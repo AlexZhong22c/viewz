@@ -78,5 +78,7 @@ export default {
   color: $z-color-gray1;
   // 去掉常见的文本选择光标：
   cursor: default;
+  // 双击不给选中文本：
+  user-select: none;
 }
 </style>
