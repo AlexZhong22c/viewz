@@ -1,6 +1,6 @@
 <template>
   <div class="z-sub-nav">
-    <div @click="onClick" class="z-sub-nav__title">
+    <div @click="onClick" class="z-sub-nav__label">
       <slot name="title"></slot>
     </div>
     <div class="z-sub-nav__popover" v-show="showPopover">
@@ -12,6 +12,13 @@
 <script>
 export default {
   name: 'ZSubNav',
+  props: {
+    // sub-nav的label部分也顶做一个nav-item，所以必须要name。起到标记作用，方便加上例如高亮等功能。
+    name: {
+      type: String,
+      required: true
+    }
+  },
   data () {
     return {
       showPopover: false
@@ -29,7 +36,7 @@ export default {
   @import "var";
   .z-sub-nav {
     position: relative;
-    .z-sub-nav__title {
+    .z-sub-nav__label {
       padding: 10px 20px;
     }
     .z-sub-nav__popover {
