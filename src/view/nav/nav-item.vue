@@ -37,6 +37,7 @@ export default {
 .z-nav-item {
   padding: 10px 20px;
   position: relative;
+  // 下面这段代码和兄弟组件中的重复了：
   &.selected {
     &::after {
       content: '';
