@@ -144,6 +144,8 @@ export default {
         padding-left: 16px;
         /* 其父元素是display:flex，用该样式不被压窄： */
         flex-shrink: 0;
+        // FIXME:这个span的区域范围太小：
+        cursor: pointer;
       }
       .vertical-line {
         // 父元素要自适应多行内容，所以只设置min-height，
