@@ -1,6 +1,6 @@
 <template>
   <div class="z-nav-item"
-    :class="{selected}"
+    :class="{selected, vertical}"
     @click="onClick">
     <slot></slot>
   </div>
@@ -9,7 +9,7 @@
 <script>
 export default {
   name: 'ZNavItem',
-  inject: ['root'],
+  inject: ['root', 'vertical'],
   props: {
     name: {
       type: String,
@@ -40,17 +40,32 @@ export default {
 .z-nav-item {
   padding: 10px 20px;
   position: relative;
-  // 下面这段代码和兄弟组件中的重复了：
-  &.selected {
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
 
-      border-bottom: 2px solid $z-border-blue1;
-      width: 100%;
+  &:not(.vertical) {
+    // 下面这段代码和兄弟组件中的重复了：
+    &.selected {
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+
+        border-bottom: 2px solid $z-border-blue1;
+        width: 100%;
+      }
     }
+  }
+  &.vertical {
+    &.selected {
+      color: $z-color-blue1;
+    }
+  }
+
+  // FIXME:里面的元素比如a元素,可点击的范围太小：
+  // 为了样式统一，只能去帮用户格式化一下：
+  a {
+    color: inherit;
+    text-decoration: none;
   }
 }
 </style>

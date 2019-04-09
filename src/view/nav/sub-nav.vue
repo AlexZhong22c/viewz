@@ -1,5 +1,5 @@
 <template>
-  <div class="z-sub-nav" :class="{active}" v-click-outside="onClose">
+  <div class="z-sub-nav" :class="{active, vertical}" v-click-outside="onClose">
     <div @click="onClick" class="z-sub-nav__label">
       <slot name="title"></slot>
       <span class="z-sub-nav__label-icon" :class="{'show-popover':showPopover}">
@@ -20,7 +20,7 @@ export default {
   name: 'ZSubNav',
   components: { ZIcon },
   directives: { ClickOutside },
-  inject: ['root'],
+  inject: ['root', 'vertical'],
   props: {
     // sub-nav的label部分也顶做一个nav-item，所以必须要name。起到标记作用，方便加上例如高亮等功能。
     name: {
@@ -58,6 +58,7 @@ export default {
 
 <style lang="scss">
   @import "var";
+  /* 虽然能开发出来，但是这个组件的样式已经特别难维护了： */
   .z-sub-nav {
     position: relative;
     .z-sub-nav__label {
@@ -82,21 +83,48 @@ export default {
       color: $z-color-gray2;
 
       min-width: 8em;
-    }
-    // 下面这段代码和兄弟组件中的重复了：
-    // 其实就是模拟在第一级的nav-item selected:
-    &.active {
-      &::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
 
-        border-bottom: 2px solid $z-border-blue1;
-        width: 100%;
+      // TODO: 这句样式的位置有待商榷：
+      transition: height 250ms;
+    }
+    &.vertical {
+      // 改写原有的样式：
+      .z-sub-nav__popover {
+        position: static;
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
+
+        // 在展开父元素高度的动画过程中，父元素始终框住子元素们，超出父元素的子元素始终不显示：
+        overflow: hidden;
+      }
+      // 二级的：
+      .z-sub-nav .z-sub-nav__label-icon {
+        transform: rotate(90deg);
+        &.show-popover {
+          transform: rotate(270deg);
+        }
+      }
+    }
+    &:not(.vertical) {
+      // 下面这段代码和兄弟组件中的重复了：
+      // 其实就是模拟在第一级的nav-item selected:
+      &.active {
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+
+          border-bottom: 2px solid $z-border-blue1;
+          width: 100%;
+        }
       }
     }
 
+    /*
+     * 二级的那些：
+    */
     // 用于给第二级改写第一级的样式：
     .z-sub-nav {
       .z-sub-nav__label {
@@ -129,7 +157,7 @@ export default {
       }
     }
     // 又和一级的z-nav-item样式不同：
-    .z-nav-item {
+    .z-nav-item:not(.vertical) {
       &.selected {
         color: $z-color-gray1;
         background: $z-bg-white--active1;

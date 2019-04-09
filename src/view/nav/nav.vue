@@ -1,5 +1,5 @@
 <template>
-  <div class="z-nav">
+  <div class="z-nav" :class="{vertical}">
     <slot></slot>
   </div>
 </template>
@@ -8,8 +8,11 @@
 export default {
   name: 'ZNav',
   provide () {
+    const { vertical } = this
     return {
-      root: this
+      root: this,
+      // 供inject provide：
+      vertical
     }
   },
   props: {
@@ -18,6 +21,10 @@ export default {
       default: () => []
     },
     multiple: {
+      type: Boolean,
+      default: false
+    },
+    vertical: {
       type: Boolean,
       default: false
     }
@@ -76,10 +83,15 @@ export default {
 .z-nav {
   display: flex;
   border-bottom: 1px solid $z-border-gray1;
+
   color: $z-color-gray1;
   // 去掉常见的文本选择光标：
   cursor: default;
   // 双击不给选中文本：
   user-select: none;
+  &.vertical {
+    flex-direction: column;
+    border: 1px solid $z-border-gray1;
+  }
 }
 </style>
