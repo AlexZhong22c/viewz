@@ -17,12 +17,7 @@ export default {
   },
   props: {
     selected: {
-      type: Array,
-      default: () => []
-    },
-    multiple: {
-      type: Boolean,
-      default: false
+      type: String
     },
     vertical: {
       type: Boolean,
@@ -52,7 +47,7 @@ export default {
     },
     refreshChildrenSelectStatus () {
       this.items.forEach(item => {
-        if (this.selected.includes(item.name)) {
+        if (this.selected === item.name) {
           item.selected = true
         } else {
           item.selected = false
@@ -61,16 +56,8 @@ export default {
     },
     listenToChildrenSelect () {
       this.items.forEach(item => {
-        item.$on('add:selected', name => {
-          if (this.multiple) {
-            if (!this.selected.includes(name)) {
-              let copy = JSON.parse(JSON.stringify(this.selected))
-              copy.push(name)
-              this.$emit('update:selected', copy)
-            }
-          } else {
-            this.$emit('update:selected', [name])
-          }
+        item.$on('update:selected', name => {
+          this.$emit('update:selected', name)
         })
       })
     }

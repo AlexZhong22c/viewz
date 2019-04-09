@@ -1,7 +1,8 @@
 <template>
   <div class="z-nav-item"
     :class="{selected, vertical}"
-    @click="onClick">
+    @click="onClick"
+    :data-name="name">
     <slot></slot>
   </div>
 </template>
@@ -28,8 +29,11 @@ export default {
     onClick () {
       // 套路是一开始把数组清空，一路组件方法的递归调用，把parent的name unshift进来数组。这样的算法效率是最快的，不用从上往下遍历谁是它的祖先，不用pid。
       this.root.namePath = []
+      // $parent可能是nav和sub-nav:
       this.$parent.updateNamePath && this.$parent.updateNamePath()
-      this.$emit('add:selected', this.name)
+      // nav通过先前的保存引用拿到里面层级的nav-item的组件实例，而不是传统的根据组件的嵌套结构拿到组件实例：
+      // 再有在nav中的vm.$on()
+      this.$emit('update:selected', this.name)
     }
   }
 }
