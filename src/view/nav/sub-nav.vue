@@ -6,9 +6,21 @@
         <z-icon name="right"></z-icon>
       </span>
     </div>
-    <div class="z-sub-nav__popover" v-show="showPopover">
-      <slot></slot>
-    </div>
+    <!-- 技巧：直接把popover的v-show改成 vue 动画。 -->
+    <template v-if="vertical">
+      <transition @enter="enter" @leave="leave" @after-leave="onAfterLeave"
+        @after-enter="onAfterEnter">
+        <!-- 这段代码有重复的，能不能用变量控制是否中间层有transition元素??: -->
+        <div class="z-sub-nav__popover" v-show="showPopover">
+          <slot></slot>
+        </div>
+      </transition>
+    </template>
+    <template v-else>
+      <div class="z-sub-nav__popover" v-show="showPopover">
+        <slot></slot>
+      </div>
+    </template>
   </div>
 </template>
 
@@ -40,6 +52,38 @@ export default {
     }
   },
   methods: {
+    /**
+     * 我们做得这么复杂是因为利用js+transition过渡的方式实现动画，而如果是像官网示例纯js控制整个动画流程可能会更简单一点。
+     * 之所以js+transition实现动画是为了演示el.getBoundingClientRect()触发重绘和重排。
+     */
+    enter (el, done) {
+      const { height } = el.getBoundingClientRect()
+      el.style.height = 0
+      el.getBoundingClientRect()
+      el.style.height = `${height}px`
+      // 监听transitionend可能有兼容性问题，ie8以下可能不行。可以改为固定300ms的setTimeout。
+      el.addEventListener('transitionend', () => {
+        // 进入
+        done()
+      })
+    },
+    leave (el, done) {
+      const { height } = el.getBoundingClientRect()
+      el.style.height = `${height}px`
+      el.getBoundingClientRect()
+      el.style.height = 0
+      el.addEventListener('transitionend', () => {
+        done()
+      })
+    },
+    // css的transition能处理opacity从0到100的渐变。但是不能处理height属性等属性从数字变化到auto，
+    // 只能用js钩子控制这部分的变化。
+    onAfterEnter (el) {
+      el.style.height = 'auto'
+    },
+    onAfterLeave (el) {
+      el.style.height = 'auto'
+    },
     onClick () {
       this.showPopover = !this.showPopover
     },
@@ -88,7 +132,7 @@ export default {
       transition: height 250ms;
     }
     &.vertical {
-      // 改写原有的样式：
+      // 出于美观考虑，改写原有的样式：
       .z-sub-nav__popover {
         position: static;
         border-radius: 0;
