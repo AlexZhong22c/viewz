@@ -6,6 +6,10 @@ $z-font-size--small: 12px;
 $z-border-radius: 4px;
 
 $z-color-gray1: #333333;
+// lighten:
+$z-color-gray2: #666666;
+
+$z-color-blue1: #4a90e2;
 
 $z-bg-white1: white;
 $z-bg-white--active1: #eeeeee;
@@ -13,6 +17,8 @@ $z-bg-white--active1: #eeeeee;
 $z-border-gray1: #999999;
 $z-border-gray--light: lighten($z-border-gray1, 30%);
 $z-border-gray--hover1: #666666;
+
+$z-border-blue1: #4a90e2;
 
 %z-box-shadow1 {
   // 还没有调到合适的颜色：
