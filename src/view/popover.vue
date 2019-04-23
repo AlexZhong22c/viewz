@@ -39,24 +39,11 @@ export default {
     return { visible: false }
   },
   mounted () {
-    // 需要做的是open和close两种事件。对于type="click"来说是两次点击；对于type="hover"来说就是鼠标移入和移出。
-    if (this.trigger === 'click') {
-      this.$refs.triggerWrapper.addEventListener('click', this.onClickTrigger)
-    } else {
-      // TODO:给哪个dom绑定mouseenter可以斟酌一下：
-      this.$refs.popover.addEventListener('mouseenter', this.open)
-      this.$refs.popover.addEventListener('mouseleave', this.close)
-    }
+    this.addPopoverListeners()
   },
   beforeDestroy () {
     this.putBackContent()
-    // 写在html模板的属性的事件绑定，vue会帮你解绑；而这些不会：
-    if (this.trigger === 'click') {
-      this.$refs.triggerWrapper.removeEventListener('click', this.onClickTrigger)
-    } else {
-      this.$refs.popover.removeEventListener('mouseenter', this.open)
-      this.$refs.popover.removeEventListener('mouseleave', this.close)
-    }
+    this.removePopoverListeners()
   },
   computed: {
     contentWrapperClass () {
@@ -125,6 +112,25 @@ export default {
         this.close()
       } else {
         this.open()
+      }
+    },
+    addPopoverListeners () {
+      // 需要做的是open和close两种事件。对于type="click"来说是两次点击；对于type="hover"来说就是鼠标移入和移出。
+      if (this.trigger === 'click') {
+        this.$refs.triggerWrapper.addEventListener('click', this.onClickTrigger)
+      } else {
+        // TODO:给哪个dom绑定mouseenter可以斟酌一下：
+        this.$refs.popover.addEventListener('mouseenter', this.open)
+        this.$refs.popover.addEventListener('mouseleave', this.close)
+      }
+    },
+    removePopoverListeners () {
+      // 写在html模板的属性的事件绑定，vue会帮你解绑；而这些不会：
+      if (this.trigger === 'click') {
+        this.$refs.triggerWrapper.removeEventListener('click', this.onClickTrigger)
+      } else {
+        this.$refs.popover.removeEventListener('mouseenter', this.open)
+        this.$refs.popover.removeEventListener('mouseleave', this.close)
       }
     },
     putBackContent () {
