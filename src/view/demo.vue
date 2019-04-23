@@ -1,66 +1,70 @@
 <template>
-  <div>
-    <z-nav :selected.sync="selected" style="margin:20px;">
-      <z-nav-item name="home">首页</z-nav-item>
-      <z-sub-nav name="about">
-        <template slot="title">关于</template>
-        <z-nav-item name="culture">企业文化</z-nav-item>
-        <z-nav-item name="developers">开发团队</z-nav-item>
-        <z-sub-nav name="contacts">
-          <template slot="title">联系方式</template>
-          <z-nav-item name="wechat">微信</z-nav-item>
-          <z-nav-item name="qq">QQ</z-nav-item>
-          <z-sub-nav name="phone">
-            <template slot="title">手机</template>
-            <z-nav-item name="cm">移动</z-nav-item>
-            <z-nav-item name="cu">联通</z-nav-item>
-            <z-nav-item name="cn">电信</z-nav-item>
-          </z-sub-nav>
-        </z-sub-nav>
-      </z-sub-nav>
-      <z-nav-item name="hire">招聘</z-nav-item>
-    </z-nav>
-    <p>选中了 {{selected}}</p>
-    <z-nav :selected.sync="selected" vertical style="width: 200px; margin: 20px; margin-top: 200px;">
-      <z-nav-item name="home">首页</z-nav-item>
-      <z-sub-nav name="about">
-        <template slot="title">关于</template>
-        <z-nav-item name="culture">企业文化</z-nav-item>
-        <z-nav-item name="developers">开发团队</z-nav-item>
-        <z-sub-nav name="contacts">
-          <template slot="title">联系方式</template>
-          <z-nav-item name="wechat">微信</z-nav-item>
-          <z-nav-item name="qq">QQ</z-nav-item>
-          <z-sub-nav name="phone">
-            <template slot="title">手机</template>
-            <z-nav-item name="cm">移动</z-nav-item>
-            <z-nav-item name="cu">联通</z-nav-item>
-            <z-nav-item name="cn">电信</z-nav-item>
-          </z-sub-nav>
-        </z-sub-nav>
-      </z-sub-nav>
-      <z-nav-item name="hire">招聘</z-nav-item>
-    </z-nav>
+  <div class="demo-form__wrapper">
+    <form class="demo-form" @submit.prevent="onSubmit">
+      <h1>登陆</h1>
+      <demo-form-row label="邮箱" :error="errors.email">
+        <z-input type="text" v-model="user.email"></z-input>
+      </demo-form-row>
+      <demo-form-row label="密码" :error="errors.password">
+        <z-input type="password" v-model="user.password"></z-input>
+      </demo-form-row>
+
+      <div>
+        <z-button class="demo-form__ok" type="submit">提交</z-button>
+      </div>
+    </form>
   </div>
 </template>
 
 <script>
-import ZNav from './nav/nav'
-import ZNavItem from './nav/nav-item'
-import ZSubNav from './nav/sub-nav'
+import ZButton from './button/button'
+import ZInput from './input'
+import DemoFormRow from './demo-form-row'
+import DemoFormMixin from '../demo-form-mixin'
 
 export default {
   name: 'demo',
-  components: { ZNav, ZNavItem, ZSubNav },
+  components: { ZButton, ZInput, DemoFormRow },
+  mixins: [DemoFormMixin],
   data () {
     return {
-      selected: 'culture'
+      user: {
+        email: '',
+        password: ''
+      },
+      rules: [
+        { key: 'email', pattern: 'email', required: true },
+        { key: 'password', minLength: 6, required: true }
+      ]
     }
   },
   created () {},
-  methods: {}
+  methods: {
+    onSubmit () {
+      this.myValidate(this.user)
+      console.log(this.errors)
+    }
+  }
 }
 </script>
+
+<style lang="scss">
+  .demo-form__wrapper {
+    display: flex;
+    justify-content: center;
+  }
+  .demo-form {
+    background: white;
+    padding: 24px;
+    border-radius: 8px;
+    margin-top: 36px;
+    min-height: 60vh;
+  }
+  .demo-form__ok {
+    width: 100%;
+    margin-top: 24px;
+  }
+</style>
 
 <style lang="scss">
 *,
