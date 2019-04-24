@@ -9,9 +9,9 @@ export default {
   name: 'ZIcon',
   props: ['name'],
   mounted () {
-    // import('./svg').then(Svg => {})
+    // import('../../svg').then(Svg => {})
     // eslint-disable-next-line
-    require('./svg')
+    require('../../svg')
   }
 }
 </script>
