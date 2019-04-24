@@ -10,8 +10,13 @@
 </template>
 
 <script>
+import ZIcon from '../icon'
+
 export default {
   name: 'ZButton',
+  components: {
+    ZIcon
+  },
   props: {
     icon: {},
     loading: {
