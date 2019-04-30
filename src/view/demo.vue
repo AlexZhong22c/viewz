@@ -1,19 +1,165 @@
 <template>
-  <div style="margin: 20px;">
-    <z-pager :total="10" :current.sync="current"></z-pager>
+  <div class="page" style="position:relative;">
+    <div id="test1" class="test1">测试一下<br>浏览器的api</div>
+    <!-- <z-scroll style="width: 300px; height: 400px;"> -->
+      <!-- <p id="test2">123456789_10_11_12_13_14_15_16_17_189</p> -->
+      <!-- <p>2</p>
+      <p>3</p>
+      <p>4</p>
+      <p>5</p>
+      <p>6</p>
+      <p>7</p>
+      <p>8</p>
+      <p>9</p>
+      <p>10</p>
+      <img src="https://dwz.cn/YPsPOi4Z" alt="">
+      <p>11</p>
+      <p>12</p>
+      <p>13</p>
+      <p>14</p>
+      <p>15</p>
+      <p>16</p>
+      <p>17</p>
+      <p>18</p>
+      <p>19</p>
+      <p>20</p>
+      <p>21</p>
+      <p>22</p>
+      <p>23</p>
+      <p>24</p>
+      <p>25</p>
+      <p>26</p>
+      <p>27</p>
+      <p>28</p>
+      <p>29</p>
+      <p>30</p>
+      <p>31</p>
+      <p>32</p>
+      <p>33</p>
+      <p>34</p>
+      <p>35</p>
+      <p>36</p>
+      <p>37</p>
+      <p>38</p>
+      <p>39</p>
+      <p>40</p>
+      <p>41</p>
+      <p>42</p>
+      <p>43</p>
+      <p>44</p>
+      <p>45</p>
+      <p>46</p>
+      <p>47</p>
+      <p>48</p>
+      <p>49</p>
+      <p>50</p>
+      <p>51</p>
+      <p>52</p>
+      <p>53</p>
+      <p>54</p>
+      <p>55</p>
+      <p>56</p>
+      <p>57</p>
+      <p>58</p>
+      <p>59</p>
+      <p>60</p>
+      <p>61</p>
+      <p>62</p>
+      <p>63</p>
+      <p>64</p>
+      <p>65</p>
+      <p>66</p>
+      <p>67</p>
+      <p>68</p>
+      <p>69</p>
+      <p>70</p>
+      <p>71</p>
+      <p>72</p>
+      <p>73</p>
+      <p>74</p>
+      <p>75</p>
+      <p>76</p>
+      <p>77</p>
+      <p>78</p>
+      <p>79</p>
+      <p>80</p>
+      <p>81</p>
+      <p>82</p>
+      <p>83</p>
+      <p>84</p>
+      <p>85</p>
+      <p>86</p>
+      <p>87</p>
+      <p>88</p>
+      <p>89</p>
+      <p>90</p>
+      <p>91</p>
+      <p>92</p>
+      <p>93</p>
+      <p>94</p>
+      <p>95</p>
+      <p>96</p>
+      <p>97</p>
+      <p>98</p>
+      <p>99</p>
+      <p>100</p>
+    </z-scroll> -->
   </div>
 </template>
 
 <script>
-import ZPager from './pager'
+// import ZScroll from './scroll'
 
 export default {
   name: 'demo',
-  components: { ZPager },
+  // components: { ZScroll },
   data () {
     return {
-      current: 1
     }
+  },
+  mounted () {
+    // setTimeout(() => {
+    //   let img = document.createElement('img')
+    //   img.src = 'https://developer.mozilla.org/static/browsers/samsung-internet.8faa2ee1b8a1.svg'
+    //   img.height = 1000
+    //   window.test2.appendChild(img)
+    // }, 1000)
+
+    let test1 = document.querySelector('#test1')
+    // 每个mousemove过程的起始位置和结束位置：
+    let startPosition
+    let endPosition
+    let isMoving = false
+    let translateX = 0
+    let translateY = 0
+    test1.addEventListener('mousedown', (e) => {
+      isMoving = true
+
+      let { screenX, screenY } = e
+      startPosition = { x: screenX, y: screenY }
+    })
+    // 阻止让外界元素产生文本选中的效果：
+    test1.addEventListener('selectstart', (e) => { e.preventDefault() })
+
+    document.addEventListener('mousemove', (e) => {
+      // 在mousedown到mouseup的范围之间才有效：
+      if (!isMoving) { return }
+
+      let { screenX, screenY } = e
+      endPosition = { x: screenX, y: screenY }
+
+      // delta = end - start
+      const delta = { x: endPosition.x - startPosition.x, y: endPosition.y - startPosition.y }
+      translateX = parseInt(translateX) + delta.x
+      translateY = parseInt(translateY) + delta.y
+      startPosition = endPosition
+      test1.style.transform = `translate(0px,${translateY}px)`
+
+      console.log('move', endPosition.y)
+    })
+    document.addEventListener('mouseup', (e) => {
+      isMoving = false
+    })
   }
 }
 </script>
@@ -23,5 +169,15 @@ export default {
 *::before,
 *::after {
   box-sizing: border-box;
+}
+</style>
+
+<style lang="scss">
+.page {
+  display: flex;
+  justify-content: center;
+}
+.test1 {
+  height: 100px; width: 100px; border: 1px solid red; position: absolute; top: 0; left: 0; z-index: 1;
 }
 </style>
