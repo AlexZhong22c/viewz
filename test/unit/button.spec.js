@@ -1,7 +1,7 @@
 /**
  * @file
  * @time 2019-03-27 全部重写了一次
- * 1. 获取getComputedStyle 需要 attachToDocument
+ * 1. 获取window.getComputedStyle前 需要 attachToDocument
  */
 import chai, { expect } from 'chai'
 import sinon from 'sinon'
