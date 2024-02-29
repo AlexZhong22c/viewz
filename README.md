@@ -1,7 +1,5 @@
 # viewz: 一个 Vue UI 组件库
 
-[![Build Status](https://travis-ci.com/AlexZhong22c/viewz.svg?token=E96bciMVFGeZxW2zpyCP&branch=master)](https://travis-ci.com/AlexZhong22c/viewz)
-
 ## 介绍
 
 ## 开始使用
