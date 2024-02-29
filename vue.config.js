@@ -4,7 +4,9 @@ module.exports = {
   css: {
     loaderOptions: {
       sass: {
-        includePaths: [path.join(__dirname, 'style')]
+        sassOptions: {
+          includePaths: [path.join(__dirname, 'style')]
+        }
       }
     }
   }
