@@ -16,5 +16,4 @@ title: 借用页面：隐藏路由
 - 【2】其实就是把不直观的、处理边际情况的操作 **挪到一行代码的后面**，比如控制片段是否产生和控制缩进等 #降低源码的系统复杂度
   - [对比别人代码](https://github.com/vform666/variant-form/blob/master/src/utils/validators.js)
 
-## 二级2
 
