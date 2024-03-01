@@ -8,6 +8,8 @@ title: 借用页面：隐藏路由
 
 [umi_cms-frontend 代码逻辑演示](https://gitee.com/az22c/umi_cms-frontend#代码逻辑演示)
 
+[axios拦截器中间件化](https://gitee.com/az22c/umi_cms-frontend/tree/master#axios拦截器中间件化)
+
 ## checklist
 
 - 【1】其实就是选对了用 模板字符串和它的$插值，才有大面积模板。insertBlanks也可以存活在$插值里面。  用（能回收isExist）的函数括号框顶替模板内的花括号、函数的方括号。

@@ -4,6 +4,7 @@ module.exports = {
   head: [ ['style', {}, `
 /*  “隐藏路由”  */
 .nav-links .nav-item:last-child { display:none;} 
+.nav-links .nav-item:nth-last-child(2) { display:none;} 
 `]],
   title: 'VIEWZ UI',
   base: '/viewz/',
@@ -12,6 +13,7 @@ module.exports = {
     nav: [
       {text: '主页', link: '/'},
       { text: '隐藏路由', link: '/hide/' },
+      { text: '口诀', link: '/fo/' },
       // {text: '文档', link: '/guide/'},
       // {text: '交流', link: 'https://google.com'},
     ],
