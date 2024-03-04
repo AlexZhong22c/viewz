@@ -11,16 +11,13 @@
 
 ## 开始使用
 
-1. 添加 CSS 样式
+1. 注意：添加 CSS 样式
 
-  使用本框架前，请在 CSS 中开启 border-box
+使用本框架前，请在 CSS 中开启 border-box
 
-  ```css
-  *, *::before, *::after { box-sizing: border-box; }
-  ```
-
-  IE8 及以上浏览器都支持此样式。
-
+```css
+*, *::before, *::after { box-sizing: border-box; }
+```
 
 2. 安装 viewz
 
@@ -28,16 +25,10 @@
 npm install viewz
 ```
 
-或
-
-```bash
-yarn add viewz
-```
-
 3. 引入 viewz
 
 ```js
-代码
+import { Button } from 'viewz'
 ```
 4. 引入 svg symbols 
 
