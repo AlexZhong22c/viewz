@@ -1,8 +1,16 @@
 # viewz: 一个 Vue UI 组件库
 
-## 文档
+## 🏠 文档
 
-🏠 [组件使用文档（带演示效果）](https://az22c.gitee.io/viewz/)  :point_left:
+- [组件使用文档（带演示效果） @gitee](https://az22c.gitee.io/viewz/)   :point_left:
+  - [组件使用文档（带演示效果） @github（内容同）](https://alexzhong22c.github.io/viewz/)   :point_left:
+
+---
+
+- [代码仓库 @gitee](https://gitee.com/az22c/viewz)   :point_left:
+  - [代码仓库 @github（内容同）](https://github.com/AlexZhong22c/viewz)   :point_left:
+
+
 
 ## 介绍
 
