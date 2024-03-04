@@ -1,6 +1,13 @@
 # viewz: 一个 Vue UI 组件库
 
+## 文档
+
+[组件使用文档（带演示效果）](https://az22c.gitee.io/viewz/)  :point_left:
+
 ## 介绍
+
+- 作为组件库，封装层级对应 Element-ui 这种层级
+- test/unit 文件： 组件的单元测试代码
 
 ## 开始使用
 
@@ -37,18 +44,6 @@ yarn add viewz
 ``` html
 <script src="//at.alicdn.com/t/font_718972_1hhoomwpb69.js"></script>
 ```
-
-## 文档
-
-[官方文档](https://alexzhong22c.github.io/viewz/)
-
-## 提问
-
-## 变更记录
-
-## 联系方式
-
-## 贡献代码
 
 ## 备注：
 
