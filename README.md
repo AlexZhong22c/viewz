@@ -2,7 +2,7 @@
 
 ## 文档
 
-[组件使用文档（带演示效果）](https://az22c.gitee.io/viewz/)  :point_left:
+🏠 [组件使用文档（带演示效果）](https://az22c.gitee.io/viewz/)  :point_left:
 
 ## 介绍
 
