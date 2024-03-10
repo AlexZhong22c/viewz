@@ -47,3 +47,9 @@ title: 口诀
   - 少执行 或者 执行效率
     - 少经过loader：oneOf exclude/include  noParse IgnorePlugin等等 原理都是一样的    【优化打包构建速度】【前文已经介绍】
     - 多线程    【优化打包构建速度】【前文已经介绍】
+
+------
+
+- 上面这几点，自己的经历 同：
+  - [【已笔记 】分包策略](https://juejin.cn/post/6844903652956585992)
+  - [仅看HardSourceWebpackPlugin，别的垃圾](https://juejin.cn/post/7233046023243907128)
