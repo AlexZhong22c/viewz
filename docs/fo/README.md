@@ -53,3 +53,49 @@ title: 口诀
 - 上面这几点，自己的经历 同：
   - [【已笔记 】分包策略](https://juejin.cn/post/6844903652956585992)
   - [仅看HardSourceWebpackPlugin，别的垃圾](https://juejin.cn/post/7233046023243907128)
+
+
+
+### 性能优化
+
+- 预 懒**缓缓**alive打包
+- g需free缩图(预~懒缓~雪格)
+- ("塞"忽略)loading懒骨         -----加快首屏显示
+- **dom、dom、绘排** 
+- **委托、防抖节流、worker、css**还有其他代码逻辑 柯里化 算法优化等等
+
+-----
+
+- 减少DOM显示数（和减少DOM嵌套层级）
+  - (一个长度10000的商品列表，怎么显示)(移动设备内存存储数据过多dom也会崩掉)
+  - (后端一次性给你返回10万条数据，怎么渲染)
+    - [【重要】它参考的文章比较科学，我也是想按这种思路来答](https://juejin.cn/post/7071979844115890206)
+  - (所谓的“长列表”通常就是不能分页的列表)
+  - (还是)页面懒加载
+  - 虚拟列表
+    - (其实就保留三屏的列表，自制组件库scoll组件也面临这个性能问题)
+    - vue-virtual-scroller和react-virtualized等等
+    - [太实现细节edge case；宏观的没说清楚](https://juejin.cn/post/6844903982742110216)
+  - 时间分片(requestAnimationFrame+DocumentFragments)：仅适合dom结构简单的，不然还是会爆内存
+    - [未笔记 内容超短](https://juejin.cn/post/6844903938894872589)
+    - [未笔记 就给方案和代码而已](https://juejin.cn/post/6844904082714984461)
+    - 为啥requestCallbackIdle那个就不算时间分片呢/??????
+
+
+### ant design vue的问题：
+
+- 树形图这个，本来就是提供得不足够，很正常，需要二次开发
+- 比如上传多个图片。它们一般只有上传文件的**没办法预览图片**。当时是想搞上传完图片方框可以预览的。悬浮上去能预览和删除item。封装一个组件图片方框后面有个上传图案的方框。自己维护状态
+  - 比如上传多个图片，增删好了之后，再统一上传，然后返回url，统一提交表单。
+- 比如固定前几列之后，后面的列和表头对不上------但是具体怎么解决，就笔记下来，脑子没用记
+- 组件没渲染，v-decorator还没生效。对form的操作不可用（比如setFieldsValue）。
+  - 解决：getFieldDecorator
+
+
+
+# 快速已复习
+
+- lazyload的container：更精确指定**被监听滚动**的容器，**若未定义则为最近一个overflow值为auto或scroll的父元素，** 这个规则很实用
+  - 懒加载组件：lazyComponent该组件由库方提供，你只需要传入default slot（里面会调用this.$slots.default）就行了，这样可以**随便传组件进去**。
+
+
