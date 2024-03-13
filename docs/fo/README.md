@@ -39,11 +39,11 @@ title: 口诀
     - 替代链：   webpack 5 cache > babel缓存  >  cache-loader
   - 【一下就飞到 分包 那里了】
     - 开发环境优化  【暂无内容 见隔壁文件】
-    - 预加载/懒加载  【暂无内容 见隔壁文件】
+    - 预加载/懒加载  【主要是提升不明显】【暂无内容 见隔壁文件】
   - 分包策略： 体积  |  更共使 频率+   数目     【前文已经介绍】
-    - code split  （配置贼复杂，还要考虑缓存）
+    - 【1】SplitChunks  （配置贼复杂，还要考虑缓存）  和  【2】code split
   - externals：外挂cdn
-    - (public;src/assets;第三方库都可以)
+    - !!! public;src/assets;第三方库都可以
   - 少执行 或者 执行效率
     - 少经过loader：oneOf exclude/include  noParse IgnorePlugin等等 原理都是一样的    【优化打包构建速度】【前文已经介绍】
     - 多线程    【优化打包构建速度】【前文已经介绍】
