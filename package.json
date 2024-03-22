@@ -54,7 +54,7 @@
     "sinon": "^7.3.0",
     "sinon-chai": "^3.3.0",
     "vuepress": "^1.9.10",
-    "webpack-dev-middleware": "3.6.2",
+    "webpack-dev-middleware": "5.3.4",
     "webpack-dev-server": "^3.2.1"
   },
   "config": {
