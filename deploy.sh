@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
+# 【但是此方案 平台能力限制只能使用最新的node】或者使用这个替代方案：https://vuepress.github.io/zh/guide/deployment.html#vercel
 
 # 确保脚本抛出遇到的错误
 set -e
