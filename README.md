@@ -46,5 +46,5 @@ import { Button } from 'viewz'
 
 ## 备注：
 
-太久没更新了。node ≥ 14
+node ≥ 14
 
