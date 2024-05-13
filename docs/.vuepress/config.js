@@ -3,8 +3,8 @@ const path = require('path')
 module.exports = {
   head: [ ['style', {}, `
 /*  “隐藏路由”  */
-.nav-links .nav-item:last-child { display:none;} 
 .nav-links .nav-item:nth-last-child(2) { display:none;} 
+.sidebar .nav-links .nav-item:nth-last-child(2) { display:none;} 
 `]],
   title: 'VIEWZ UI',
   base: '/viewz/',
