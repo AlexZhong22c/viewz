@@ -1,6 +1,6 @@
 # 安装
 
-本章节待完善
+本章节文案待完善 （组件已实现完成）
 
 ```bash
 npm install viewz 
