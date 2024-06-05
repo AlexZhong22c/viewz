@@ -37,6 +37,7 @@ module.exports = {
           '/components/toast'
         ]
       },
+      ['https://gitee.com/az22c/viewz/tree/master/src/view', '组件源码']
     ]
   },
   scss: {
