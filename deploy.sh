@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
-# 【但是此方案 平台能力限制只能使用最新的node】或者使用这个替代方案：https://vuepress.github.io/zh/guide/deployment.html#vercel
+# 直接本地打包提交到vercel。而vercel自动部署需要最新版本的nodejs
+# 运行 ./deploy.sh 前仅需要切换nvm node v14：
 
 # 确保脚本抛出遇到的错误
 set -e
