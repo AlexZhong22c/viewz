@@ -2,7 +2,7 @@
 
 ## 🏠 文档
 
-- [组件使用文档（带演示效果） @vercel](https://www.az22c.top/viewz/)   :point_left:
+- [组件使用文档（带演示效果） @vercel](https://x.az22c.top/viewz/)   :point_left:
   - [组件使用文档（带演示效果） @github（内容同）](https://alexzhong22c.github.io/viewz/)   :point_left:
 
 ---
